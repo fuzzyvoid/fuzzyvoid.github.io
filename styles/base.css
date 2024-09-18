@@ -51,6 +51,7 @@ body {
 
 #logo img {
 	max-width: var(--logo-width);
+	background-color: none;
 }
 
 div.page-width {
@@ -132,9 +133,9 @@ hr {
 }
 
 img {
-	border-radius: 32px;
+	/* border-radius: 32px; */
 	box-shadow: var(--shadow);
-	background-color: var(--background-colour-light);
+	/* background-color: var(--background-colour-light); */
 	margin: 1rem auto;
 }
 
