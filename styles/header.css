@@ -1,17 +1,20 @@
 .letterhead {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
+
 /* Logo */
 .letterhead a svg {
   margin: 0 0.75rem 0 0;
 }
+
 .letterhead a {
   display: inherit;
   text-decoration: none;
   color: var(--text-colour);
 }
+
 /* Hide close icon on page load */
 #closeIcon {
   display: none;
