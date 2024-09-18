@@ -3,6 +3,7 @@
 	/* Layout */
 	--page-width: 1200px;
 	--content-padding: 2rem;
+	--logo-width: 200px;
 
 	/* Typography */
 	--heading-text-size: 24pt;
@@ -42,6 +43,14 @@ body {
 	line-height: var(--line-height);
 	margin: 0;
 	min-height: inherit;
+}
+
+#logo {
+	margin: auto;
+}
+
+#logo img {
+	max-width: var(--logo-width);
 }
 
 div.page-width {
