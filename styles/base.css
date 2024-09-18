@@ -15,7 +15,7 @@
 	--background-colour: #000000;
 	--foreground-colour: color-mix(in hsl, var(--background-colour), var(--text-colour) 2%);
 	--text-colour: #ffffff;
-	--link-colour: #15c86c;
+	--link-colour: #209920;
 	--background-colour-light: color-mix(in hsl, var(--background-colour), var(--text-colour) 6%);
 
 	/* Borders */
