@@ -36,7 +36,8 @@ html {
 }
 
 body {
-	font-family: var(--main-font-family) background-color: var(--background-colour);
+	font-family: var(--main-font-family);
+	background-color: var(--background-colour);
 	color: var(--text-colour);
 	font-size: var(--text-size);
 	font-weight: 100;
