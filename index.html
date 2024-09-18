@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- Critical -->
-			<script src="/scripts/htmlinclude.js"></script>
-			<link rel="stylesheet" type="text/css" href="/styles/base.css">
-		<!-- Centralized head -->
-			<link w3-include-html="/common/head.html"/>
-		<!-- Scripts -->
-			<script src="/scripts/global.js" defer="defer"></script>
-			<script src="/scripts/togglemenu.js"></script>			
-	</head>
 
-  <script>
-    includeHTML();
-  </script>
+<head>
+	<!-- Critical -->
+	<script src="/scripts/htmlinclude.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/base.css">
+	<!-- Centralized head -->
+	<link w3-include-html="/common/head.html" />
+	<!-- Scripts -->
+	<script src="/scripts/global.js" defer="defer"></script>
+	<script src="/scripts/togglemenu.js"></script>
+</head>
 
-	<body>
-		<div class="page-width">
-			<div class="maincontainer">
-				<header>					
-					<div w3-include-html="/common/header.html"></div>
-					<div w3-include-html="/common/nav.html"></div>				
-				</header>
+<script>
+	includeHTML();
+</script>
 
-				<section id="article" w3-include-html="/pages/home.html"></section>
+<body>
+	<div class="page-width">
+		<div class="maincontainer">
+			<header>
+				<div w3-include-html="/common/header.html"></div>
+				<div w3-include-html="/common/nav.html"></div>
+			</header>
 
-				<footer>
-					<div w3-include-html="/common/footer.html"></div>
-					
-					<div class="copyright">
-						<p>&copy; <span id="currentyear"></span> Lex Feathers</p>
-						<!-- Get current year -->
-						<script>
-							date = new Date();
-							year = date.getFullYear();
-				
-							document.getElementById("currentyear").innerHTML = year;
-						</script>							
-					</div>
-				</footer>		
-			</div>
+			<section id="article" w3-include-html="/pages/home.html"></section>
+
+			<footer>
+				<div w3-include-html="/common/footer.html"></div>
+
+				<div class="copyright">
+					<p>&copy; <span id="currentyear"></span> <span w3-include-html="/common/site_title.html"></span></p>
+					<!-- Get current year -->
+					<script>
+						date = new Date();
+						year = date.getFullYear();
+
+						document.getElementById("currentyear").innerHTML = year;
+					</script>
+				</div>
+			</footer>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>
