@@ -52,6 +52,7 @@ body {
 #logo img {
 	max-width: var(--logo-width);
 	background-color: none;
+	box-shadow: none;
 }
 
 div.page-width {
