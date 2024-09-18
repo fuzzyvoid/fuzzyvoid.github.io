@@ -73,6 +73,10 @@ h2 {
 	box-shadow: var(--shadow);
 }
 
+h2 a {
+	color: var(--background-colour);
+}
+
 .letterhead {
 	justify-content: center;
 }
