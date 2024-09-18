@@ -1,0 +1,27 @@
+#footerlayout {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0 1rem 0;
+}
+
+.footercolumn a {
+  margin-right: 2rem;
+  font-size: 12pt;
+  text-decoration: none;
+  text-transform: lowercase;
+  margin-top: 0;  
+}	
+
+/* Mobile */
+@media screen and (max-width: 749px) {
+  footer {
+    text-align: center;
+  } 
+  #footerlayout {
+    justify-content: space-around;
+  }
+  .footercolumn a {
+    margin-right: auto;
+  }
+}

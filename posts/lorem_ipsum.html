@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Critical -->
+			<script src="/scripts/htmlinclude.js"></script>
+			<link rel="stylesheet" type="text/css" href="/styles/base.css">
+		<!-- Centralized head -->
+			<link w3-include-html="/common/head.html"/>
+		<!-- Scripts -->
+			<script src="/scripts/global.js" defer="defer"></script>
+			<script src="/scripts/togglemenu.js"></script>
+	</head>
+
+	<script>
+		includeHTML();
+	</script>
+
+	<body>
+		<div class="page-width">
+			<div class="maincontainer">
+				<header>					
+					<div w3-include-html="/common/header.html"></div>
+					<div w3-include-html="/common/nav.html"></div>				
+				</header>
+
+				<section id="article">
+          <h1>Standard post</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dictum enim id nulla cursus efficitur. Suspendisse in malesuada ligula. Phasellus mi ligula, mollis vitae quam a, vestibulum feugiat turpis. In tempus, eros et pellentesque viverra, nunc erat sodales nisl, eu maximus ex justo sed augue. In ut nunc eros. Quisque suscipit elit a gravida vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla tempor, nunc sed gravida consequat, mauris est ornare sem, vitae faucibus turpis libero efficitur purus. Praesent tincidunt vel mi vitae eleifend. Phasellus at fermentum ipsum. Vivamus condimentum, orci nec sagittis pretium, ante nunc tincidunt velit, quis fringilla felis enim ut neque. Cras elementum libero non sem venenatis, vulputate egestas massa fringilla. Curabitur feugiat facilisis risus, id faucibus orci vulputate at. Pellentesque nibh est, lacinia vel lacus volutpat, vulputate sollicitudin magna.</p>
+          <p>Curabitur venenatis augue quis massa sagittis suscipit. Donec tempor iaculis tortor sit amet ornare. Nulla nec erat eget neque ultrices luctus quis vel erat. Integer ultrices dictum eros ut facilisis. Fusce egestas, diam quis posuere blandit, urna nisl lobortis arcu, id dapibus tellus augue scelerisque justo. Pellentesque leo odio, sodales et tellus nec, rutrum mattis nibh. Curabitur at posuere lacus, ut efficitur ex. Integer ut est eget ex ultricies rhoncus sit amet consectetur quam. Curabitur nulla quam, porta non ipsum vel, iaculis mollis elit. Vivamus mollis lacus ut accumsan imperdiet. Nunc eleifend, metus at sollicitudin euismod, nunc ex bibendum turpis, sed consectetur nisi nibh sit amet justo. Cras tempor at purus at scelerisque. Integer et velit non enim congue volutpat in quis mi. Quisque magna tortor, semper eget semper in, luctus id risus. Maecenas lobortis, purus ut volutpat dictum, lacus nibh posuere odio, semper ultrices enim augue et tellus.</p>
+          
+          <img src="/images/pineapple.jpg" loading="lazy" alt="A grayscale photo of plants at the Glasgow botanical gardens, taken in June 2018.">
+          <sub>In 2018, I took a trip to Glasgow and visited the botanical gardens.</sub>
+          
+          <p>Donec faucibus augue vitae dapibus ultricies. Nullam gravida aliquet tincidunt. Vivamus tortor justo, imperdiet vitae libero nec, luctus gravida lectus. Integer erat ipsum, molestie id quam vitae, semper hendrerit mauris. Pellentesque eu pellentesque massa, sed vulputate leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque dapibus egestas volutpat. Aenean non risus aliquet nunc imperdiet feugiat. Mauris velit nulla, gravida non iaculis lobortis, aliquet quis diam. Ut risus odio, convallis et mauris nec, tincidunt suscipit leo. Proin tincidunt nibh sed ex scelerisque volutpat.</p>
+          <p>Proin ut massa non quam commodo dapibus eu et odio. Donec volutpat ac libero sed sodales. Sed sodales aliquam dolor, eget hendrerit arcu rhoncus id. Donec feugiat nec felis a sagittis. Vivamus congue, massa ac feugiat bibendum, ex dui dapibus arcu, a vestibulum mauris purus eu nisl. Ut in rhoncus mi. Nunc lacus urna, mattis nec congue rutrum, imperdiet ac nisl. Integer at vestibulum nunc. Donec consequat lorem mauris, at pharetra lacus posuere non. Morbi in sollicitudin neque. Fusce id neque neque. Nunc scelerisque, dui commodo eleifend dapibus, metus augue cursus tellus, in lacinia odio orci vel magna. Donec id justo quis mi volutpat laoreet. Curabitur pharetra imperdiet lectus, ut ullamcorper nisl scelerisque a. Vivamus sagittis, tortor at elementum pulvinar, diam dolor pharetra ex, sed consectetur dui mi vel ipsum. Praesent nec malesuada odio, sit amet tincidunt nisl.</p>
+          <p>Pellentesque eget elit ultrices, consectetur felis sit amet, dignissim turpis. Curabitur rutrum mollis arcu. Fusce sed venenatis neque. Sed non est eget ligula vehicula sagittis ac pellentesque odio. Mauris lacinia dolor eu odio posuere aliquam. Maecenas non urna laoreet tellus posuere fermentum. Phasellus nec feugiat erat, ut lacinia nulla. Donec eu urna metus. Praesent dapibus sapien sapien, at mollis velit mollis in. Donec lectus massa, pulvinar condimentum egestas bibendum, condimentum vel urna. Vivamus blandit sed odio quis faucibus. Sed et diam vel massa molestie tincidunt vitae vel neque. Cras augue purus, consectetur sagittis tempor vitae, egestas et magna. Aenean sagittis nisi non odio pharetra, non laoreet elit malesuada. Sed fermentum sem quis suscipit tempus. </p>
+				</section>
+
+				<footer>
+					<div w3-include-html="/common/footer.html"></div>
+					
+					<div class="copyright">
+						<p>&copy; <span id="currentyear"></span> Lex Feathers</p>
+						<!-- Get current year -->
+						<script>
+							date = new Date();
+							year = date.getFullYear();
+				
+							document.getElementById("currentyear").innerHTML = year;
+						</script>							
+					</div>
+				</footer>		
+			</div>
+		</div>
+	</body>
+</html>

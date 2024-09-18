@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div class="gender-display"></div>
+  </body>
+</html>
+
+<script>
+  let genderOutput = 0;
+
+  setInterval(setGender, 1000); //Run this function every 1s
+
+  function setGender() {
+    genderOutput++;
+
+    if (genderOutput > 2) {
+      genderOutput = 0;
+    } 
+
+    let genderAnnounce = genderOutput + `<br>`;
+
+    if (genderOutput == 2) {
+      genderAnnounce = genderOutput + ` u contain multitudes` + `<br>`;
+    }else if (genderOutput == 0) {
+      genderAnnounce = genderOutput + ` ur boy` + `<br>`;
+    }else {
+      genderAnnounce = genderOutput + ` ur girl` + `<br>`;
+    }
+    
+    document.querySelector(".gender-display").innerHTML += genderAnnounce;
+  }
+</script>

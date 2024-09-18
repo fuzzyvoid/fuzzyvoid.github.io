@@ -1,0 +1,23 @@
+<h1>Archive:</h1> 
+<p>(you may notice that these are pretty much devoid of any real content. They were just a way for me to test my styling.)</p>
+<ul id="postlist">
+  <li class="postlist__item"><a href="/posts/lorem_ipsum.html">Lorem Ipsum</a></li>
+  <li class="postlist__item"><a href="/posts/post.html">item2</a></li>
+  <li class="postlist__item"><a href="/posts/post.html">item3</a></li>
+  <li class="postlist__item"><a href="/posts/post.html">item4</a></li>
+</ul>
+
+<style>
+  ul#postlist {
+    list-style: none;
+  }
+  ul#postlist {
+    vertical-align: middle;
+  }
+  .postlist__item::before {
+    content: '>';
+    vertical-align: middle;
+    margin-right: 1rem;
+    line-height: 2.5rem;
+  }
+</style>
