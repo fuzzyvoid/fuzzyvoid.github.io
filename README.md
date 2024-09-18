@@ -1,7 +1,9 @@
+![Revertices logo](/images/logo-small-gif.gif)
 
 ## This is the **Revertices** website. 
 
 It was built from scratch (for some reason) by Lex Feathers.
+
 
 Some quick tips:
 
