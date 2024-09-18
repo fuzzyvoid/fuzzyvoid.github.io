@@ -13,7 +13,7 @@
 	--line-height: 1.4;
 
 	/* Colours */
-	--background-colour: #000000;
+	--background-colour: #121212;
 	--foreground-colour: color-mix(in hsl, var(--background-colour), var(--text-colour) 2%);
 	--text-colour: #ffffff;
 	--link-colour: #209920;
