@@ -1,4 +1,4 @@
-![Revertices logo](/images/logo-small-gif.gif)
+[![Revertices logo](/images/logo-small-gif.gif)](https://revertices.com)
 
 ## This is the **Revertices** website. 
 
