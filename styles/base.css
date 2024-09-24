@@ -154,7 +154,7 @@ hr {
 img {
 	/* border-radius: 32px; */
 	box-shadow: var(--shadow);
-	/* background-color: var(--background-colour-light); */
+	background-color: var(--background-colour-light);
 	margin: 1rem auto;
 }
 
