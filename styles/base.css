@@ -65,10 +65,10 @@ div.tickers {
 	position: relative;
 	z-index: 1;
 	display: flex;
-	position: absolute;
 	width: 69px;
 	height: 1070px;
-	background-image: url(/images/cutsceneborder.png)
+	background-image: url(/images/cutsceneborder.png);
+	background-repeat: repeat-y;
 }
 
 div.page-width {
