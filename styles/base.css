@@ -158,6 +158,10 @@ img {
 	margin: 1rem auto;
 }
 
+table {
+	margin: auto;
+}
+
 td:last-child {
 	margin-left: 2rem;
 }
