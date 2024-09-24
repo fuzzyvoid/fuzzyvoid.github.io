@@ -14,7 +14,7 @@
 
 	/* Colours */
 	--background-colour: black;
-	--foreground-colour: color-mix(in hsl, var(--background-colour), var(--text-colour) 2%);
+	--foreground-colour: color-mix(in hsl, var(--background-colour), var(--text-colour) 5%);
 	--text-colour: #ffffff;
 	--link-colour: #209920;
 	--background-colour-light: color-mix(in hsl, var(--background-colour), var(--text-colour) 6%);
