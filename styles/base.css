@@ -44,6 +44,9 @@ body {
 	line-height: var(--line-height);
 	margin: 0;
 	min-height: inherit;
+	background-image: url(/images/cutsceneborder.png), url(/images/cutsceneborder.png);
+	background-position: left top, right top;
+	background-repeat: repeat-y, repeat-y;
 }
 
 #logo {
@@ -54,24 +57,6 @@ body {
 	max-width: var(--logo-width);
 	background-color: none;
 	box-shadow: none;
-}
-
-div.tickerbox {
-	display: flex;
-	justify-content: space-between;
-	background-image: url(/images/cutsceneborder.png), url(/images/cutsceneborder.png);
-	background-position: left top, right top;
-	background-repeat: repeat-y, repeat-y;
-}
-
-div.tickers {
-	position: relative;
-	z-index: 1;
-	display: flex;
-	width: 69px;
-	height: 1070px;
-	background-image: url(/images/cutsceneborder.png);
-	background-repeat: repeat-y;
 }
 
 div.page-width {
