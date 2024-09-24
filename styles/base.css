@@ -162,6 +162,10 @@ table {
 	margin: auto;
 }
 
+td {
+	border-bottom: 1px solid var(--ders);
+}
+
 td:last-child {
 	padding-left: 4rem;
 }
@@ -234,7 +238,6 @@ footer {
 
 	td {
 		padding: .25rem;
-		border-bottom: 1px solid var(--ders);
 	}
 }
 
