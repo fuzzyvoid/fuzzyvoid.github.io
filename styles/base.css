@@ -231,6 +231,10 @@ footer {
 	.material-icons {
 		font-size: 24pt;
 	}
+
+	td {
+		padding: 1rem;
+	}
 }
 
 /* End private styles */
