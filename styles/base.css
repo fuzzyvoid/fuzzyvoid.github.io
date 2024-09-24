@@ -172,6 +172,7 @@ td:last-child {
 
 #logo img {
 	box-shadow: none;
+	background-color: var(--foreground-colour);
 }
 
 #article img,
