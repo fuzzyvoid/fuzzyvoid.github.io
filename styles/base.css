@@ -111,7 +111,7 @@ hr {
 	border-radius: var(--border-radius);
 }
 
-.menu {
+.menu a {
 	color: var(--ders);
 }
 
