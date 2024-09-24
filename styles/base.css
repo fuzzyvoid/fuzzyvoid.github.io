@@ -13,10 +13,15 @@
 	--line-height: 1.4;
 
 	/* Colours */
+	/* Characters */
+	--cirne: #209920;
+	--trale: #00A2FF;
+	--ders: #E71004;
+	/* Main colours */
 	--background-colour: black;
 	--foreground-colour: color-mix(in hsl, var(--background-colour), var(--text-colour) 5%);
 	--text-colour: #ffffff;
-	--link-colour: #209920;
+	--link-colour: var(--cirne);
 	--background-colour-light: color-mix(in hsl, var(--background-colour), var(--text-colour) 6%);
 
 	/* Borders */
@@ -102,8 +107,12 @@ a {
 
 hr {
 	height: 0px;
-	border: solid calc(var(--border-thickness) / 2) var(--link-colour);
+	border: solid calc(var(--border-thickness) / 2) var(--trale);
 	border-radius: var(--border-radius);
+}
+
+.menu {
+	color: var(--ders);
 }
 
 .title {
