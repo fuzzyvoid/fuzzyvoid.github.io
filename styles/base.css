@@ -22,7 +22,7 @@
 	--foreground-colour: color-mix(in hsl, var(--background-colour), var(--text-colour) 5%);
 	--text-colour: #ffffff;
 	--link-colour: var(--cirne);
-	--background-colour-light: color-mix(in hsl, var(--background-colour), var(--text-colour) 6%);
+	--background-colour-light: color-mix(in hsl, var(--background-colour), var(--text-colour) 8%);
 
 	/* Borders */
 	--border-thickness: 2px;
