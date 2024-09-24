@@ -59,6 +59,9 @@ body {
 div.tickerbox {
 	display: flex;
 	justify-content: space-between;
+	background-image: url(/images/cutsceneborder.png), url(/images/cutsceneborder.png);
+	background-position: left top, right top;
+	background-repeat: repeat-y, repeat-y;
 }
 
 div.tickers {
