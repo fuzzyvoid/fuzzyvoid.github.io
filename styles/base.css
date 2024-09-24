@@ -56,11 +56,19 @@ body {
 	box-shadow: none;
 }
 
-div.tickers {
-	z-index: 1;
+div.tickerbox {
 	display: flex;
 	justify-content: space-between;
-	background: url(/images/cutsceneborder.png);
+}
+
+div.tickers {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	position: absolute;
+	width: 69px;
+	height: 1070px;
+	background-image: url(/images/cutsceneborder.png)
 }
 
 div.page-width {
