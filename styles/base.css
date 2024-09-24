@@ -158,6 +158,10 @@ img {
 	margin: 1rem auto;
 }
 
+td:last-child {
+	margin-left: 2rem;
+}
+
 #logo img {
 	box-shadow: none;
 }
