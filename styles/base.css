@@ -158,6 +158,10 @@ img {
 	margin: 1rem auto;
 }
 
+#logo img {
+	box-shadow: none;
+}
+
 #article img,
 sub {
 	display: block;
