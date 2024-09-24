@@ -205,6 +205,10 @@ footer {
 	padding: 2rem 0;
 }
 
+footer a:hover {
+	text-decoration: underline;
+}
+
 .copyright {
 	display: block;
 	color: var(--link-colour);
