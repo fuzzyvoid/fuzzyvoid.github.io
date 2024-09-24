@@ -163,7 +163,7 @@ table {
 }
 
 td:last-child {
-	margin-left: 2rem;
+	padding-left: 4rem;
 }
 
 #logo img {
