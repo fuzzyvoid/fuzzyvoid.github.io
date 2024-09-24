@@ -160,10 +160,12 @@ img {
 
 table {
 	margin: auto;
+	width: 69%;
 }
 
 td {
 	border-bottom: 1px solid var(--ders);
+	padding: .25rem;
 }
 
 td:last-child {
@@ -235,10 +237,6 @@ footer {
 
 	.material-icons {
 		font-size: 24pt;
-	}
-
-	td {
-		padding: .25rem;
 	}
 }
 
