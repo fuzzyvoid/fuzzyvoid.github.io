@@ -96,7 +96,7 @@ h2 a {
 }
 
 .letterhead svg {
-	width: 2rem;
+	width: 100%;
 	height: auto;
 	vertical-align: middle;
 }
