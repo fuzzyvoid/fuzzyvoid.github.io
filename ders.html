@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" class="snap">
+<head>
+	<!-- @include head - shared for every page; do not edit here. Edit _partials/head.html, then run: node tools/sync.mjs -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#111">
+	<meta name="robots" content="noimageai">
+	<meta name="robots" content="noai">
+
+	<link rel="icon" href="assets/favicon.png" type="image/x-icon">
+
+	<!-- maintain order: theme.css; base; any other files -->
+	<link rel="stylesheet" href="assets/css/theme.css">
+	<link rel="stylesheet" href="assets/css/base.css">
+	<link rel="stylesheet" href="assets/css/panels.css">
+	<link rel="stylesheet" href="assets/css/components.css">
+	<link rel="stylesheet" href="assets/css/skew.css">
+	<link rel="stylesheet" href="assets/css/transitions.css">
+
+	<!-- allows for CSS fallbacks when there's no JS -->
+	<script>document.documentElement.classList.add('js');</script>
+
+	<!-- site.js must load before alpine.min.js -->
+	<script defer src="assets/js/site.js"></script>
+	<script defer src="assets/js/vendor/alpine.min.js"></script>
+	<!-- @end head -->
+
+	<!-- Page-specific -->
+	<title>Ders Quera - Revertices</title>
+	<meta name="description" content="The Survivor, Ders Quera">
+	<link rel="canonical" href="https://revertices.com/ders">
+
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="Revertices">
+	<meta property="og:title" content="Ders Quera - Revertices">
+	<meta property="og:description" content="The Survivor, Ders Quera.">
+	<meta property="og:url" content="https://revertices.com/ders">
+	<meta property="og:image" content="https://revertices.com/assets/media/img/logo-clean.png">
+	<meta property="og:image:width" content="1264">
+	<meta property="og:image:height" content="648">
+	<meta property="og:image:alt" content="The Revertices logo: the word 'Revertices' covered with ooze with eyeballs.">
+	<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body data-page="ders">
+	<!-- @include header - shared for every page; do not edit here. Edit _partials/header.html, then run: node tools/sync.mjs -->
+<!-- Alpine data/events are for opening/closing menu in mobile view -->
+<header
+	class="site-header"
+	x-data="{ open: false }"
+	@keydown.escape="open = false"
+>
+	<div class="site-header__inner">
+		<div class="survivor-btns">
+			<a class="btn survivor-btn" data-survivor="ders" href="ders.html">
+				<img
+					class="base"
+					src="assets/media/img/btns/UI_Ders_Head.png"
+					alt="Ders Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="hover"
+					src="assets/media/img/btns/UI_Ders_Head_Hurt.png"
+					alt="Ders Icon Button"
+					width="64"
+					height="64"
+				>
+				<img class="when-page-active"
+					src="assets/media/img/btns/UI_Ders_Head_Heal.png"
+					alt="Ders Icon Button"
+					width="64"
+					height="64"
+				>
+			</a>
+			<a class="btn survivor-btn" data-survivor="cirne" href="cirne.html">
+				<img
+					class="base"
+					src="assets/media/img/btns/UI_Cirne_Head.png"
+					alt="Cirne Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="hover"
+					src="assets/media/img/btns/UI_Cirne_Head_Heal.png"
+					alt="Cirne Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="when-page-active"
+					src="assets/media/img/btns/UI_Cirne_Head_Heal.png"
+					alt="Cirne Icon Button"
+					width="64"
+					height="64"
+				>
+			</a>
+			<a class="btn survivor-btn" data-survivor="trale" href="trale.html">
+				<img
+					class="base"
+					src="assets/media/img/btns/UI_Trale_Head.png"
+					alt="Trale Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="hover"
+					src="assets/media/img/btns/UI_Trale_Head_Hurt.png"
+					alt="Trale Icon Button"
+					width="64"
+					height="64"
+				>
+				<img class="when-page-active"
+					src="assets/media/img/btns/UI_Trale_Head_Heal.png"
+					alt="Trale Icon Button"
+					width="64"
+					height="64"
+				>
+			</a>
+		</div>
+
+		<div class="site-logo">
+			<a href="index.html">
+				<img
+					src="assets/media/img/logo-clean.png"
+					alt="Revertices Logo"
+				>
+			</a>
+		</div>
+
+		<!-- Shown below 48rem instead of in the menu, keeping CTA visible -->
+		<a
+			class="btn btn--primary header-cta"
+			href="https://store.steampowered.com/app/3236560/Revertices/"
+		>Wishlist</a>
+
+		<button
+			class="nav-toggle"
+			type="button"
+			aria-controls="primary-nav"
+			:aria-expanded="open ? 'true' : 'false'"
+			@click="open = !open"
+		>
+			<span class="visually-hidden">Menu</span>
+			<img src="assets/media/svg/burger-menu.svg" width="22" height="22"/>
+		</button>
+
+		<!-- data-open is always a string to persist the attribute. CSS hides this when BOTH .js is present and the viewport is narrow, so menu is still usable with no JS on mobile -->
+		<ul class="nav"
+			id="primary-nav"
+			:data-open="open ? 'true' : 'false'"
+			@click="open = false"
+		>
+			<li>
+				<a
+					class="nav__link with-icon"
+					href="https://fuzzyvoidco.itch.io/revertices"
+				>Itch</a>
+			</li>
+			<li>
+				<a
+					class="nav__link with-icon cirne"
+					href="https://store.steampowered.com/app/3236560/Revertices/"
+				>Steam</a>
+			</li>
+			<li>
+				<a
+					class="nav__link with-icon trale"
+					data-nav="about"
+					href="about.html"
+				>About</a>
+			</li>
+
+
+			<li class="nav__cta">
+				<a
+					class="btn btn--primary"
+					href="https://store.steampowered.com/app/3236560/Revertices/"
+				>Wishlist</a>
+			</li>
+		</ul>
+	</div>
+</header>
+	<!-- @end header -->
+
+<main id="main">
+    <div class="page-body">
+		<section class="panel panel-card panel--survivor">
+			<img class="panel-survivor-img"
+				src="assets/media/img/ders_large.png"
+				alt="Ders"
+				fetchpriority="high"
+			>
+
+				<div class="card skewed-container survivor-card ders">
+					<div class="survivor-content">
+					<h1 class="card-title">Ders Quera</h1>
+
+					<h2 class="card-subtitle">Mentor of the Sword</h2>
+
+					<div class="survivor-details">
+						<div class="survivor-weapon">
+							<label>Weapon</label>
+							<img src="assets/media/img/icons/ders-sword.png" alt="Sword" class="icon">
+							<div>Sword</div>
+						</div>
+
+						<div class="survivor-special">
+							<label>Special</label>
+							<img src="assets/media/img/icons/ders-sword.png" alt="Quake" class="icon">
+							<div>Quake</div>
+						</div>
+					</div>
+					</div>
+				</div>
+		</section>
+
+		<section class="panel feature"
+				id="features">
+			<div class="panel__inner feature__inner">
+				<div class="feature__text reveal">
+					<p>Favourite Attack</p>
+					<h2>Riposte</h2>
+				</div>
+				<img class="feature__media reveal reveal--late"
+					src="assets/media/gifs/steampagegif_ders.gif"
+					loading="lazy"
+					decoding="async">
+			</div>
+		</section>
+
+		<section class="panel feature feature--reverse">
+			<div class="panel__inner feature__inner">
+				<div class="feature__text reveal">
+					<p>Favourite Shape</p>
+					<h2>I don't appreciate superlatives</h2>
+				</div>
+				<img class="feature__media reveal reveal--late"
+					src="assets/media/img/screenshots/ders_special_attacking.png"
+					width="1600"
+					height="900"
+					loading="lazy"
+					decoding="async">
+			</div>
+		</section>
+
+		<section class="panel feature">
+			<div class="panel__inner feature__inner">
+				<div class="feature__text reveal">
+					<p>Favourite Colour</p>
+					<h2>Vanta Black</h2>
+				</div>
+				<img class="feature__media reveal reveal--late"
+					src="assets/media/img/screenshots/ders_damaged.png"
+					width="1600"
+					height="900"
+					loading="lazy"
+					decoding="async">
+			</div>
+		</section>
+
+		<section class="panel feature feature--reverse">
+			<div class="panel__inner feature__inner">
+				<div class="feature__text reveal">
+					<p>Ideal First Date</p>
+					<h2>.....</h2>
+				</div>
+				<img class="feature__media reveal reveal--late"
+					src="assets/media/img/screenshots/ders_chillin.jpg"
+					width="1600"
+					height="900"
+					loading="lazy"
+					decoding="async">
+			</div>
+		</section>
+
+		<section class="panel panel--auto panel--relationship" id="rel-ders-trale">
+			<div class="skewed-container panel-card relationship-card trale">
+				<div class="sprite-sheet trale idle"></div>
+
+				<div class="relationship__text">
+					<h2>Ders & Trale</h2>
+					<p><span class="ders">Ders</span> admires <span class="trale">Trale</span>'s strong work ethic and enjoys training with them. <span class="ders">Ders</span> does their best to be the mentor <span class="trale">Trale</span> deserves. However, <span class="ders">Ders</span> does worry about <span class="trale">Trale</span>'s naivete and how they'll be able to handle themselves against the Polygonal Entity.</p>
+					<a class="btn btn--primary trale-accent" href="trale.html">Trale</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="panel panel--auto panel--relationship" id="rel-ders-cirne">
+			<div class="skewed-container panel-card relationship-card cirne">
+				<div class="relationship__text">
+					<h2>Ders & Cirne</h2>
+					<p><span class="ders">Ders</span> often gets very frustrated with <span class="cirne">Cirne</span> who doesn't seem to take their training seriously. However, <span class="ders">Ders</span> still cares a lot about <span class="cirne">Cirne</span> and worries about their recklessness leading to their demise. Deep down, <span class="ders">Ders</span> sees a part of themself
+					in <span class="cirne">Cirne</span>.</p>
+					<a class="btn btn--primary cirne-accent" href="cirne.html">Cirne</a>
+				</div>
+
+				<div class="sprite-sheet cirne idle" style="transform: scaleX(-2) scaleY(2);"></div>
+			</div>
+		</section>
+
+	<!-- @include cta_panel: Edit _partials/cta_panel.html, then run: node tools/sync.mjs -->
+	<section class="panel panel--auto" id="wishlist">
+		<div class="skewed-container panel-card">
+			<div class="section-head section-head--center reveal full">
+				<h1>Wishlist on Steam NOW</h1>
+			</div>
+
+			<p class="lede m-auto text-center">
+				<a href="https://store.steampowered.com/app/3236560/Revertices/" class="btn btn--primary inline-flex m-auto">Wishlist</a>
+			</p>
+		</div>
+	</section>
+	<!-- @end cta_panel -->
+    </div>
+</main>
+
+	<!-- @include footer - shared for every page; do not edit here. Edit _partials/footer.html, then run: node tools/sync.mjs -->
+<footer class="site-footer">
+	<div class="site-footer__inner">
+		<div>
+			<a href="index.html">
+				<img src="assets/media/img/logo-clean.png" alt="Revertices Logo">
+			</a>
+		</div>
+
+		<div class="site-footer__link-lists">
+			<div>
+				<p class="eyebrow">Play the Game</p>
+				<ul class="footer-links">
+					<li><a href="https://store.steampowered.com/app/3236560/Revertices/">Steam</a></li>
+					<li><a href="https://fuzzyvoidco.itch.io/revertices">Itch</a></li>
+					<!-- If we need these? -->
+					<!-- <li><a href="press.html">Press Kit</a></li> -->
+					<!-- <li><a href="mailto:hello@revertices.com">Contact</a></li> -->
+				</ul>
+			</div>
+
+			<div>
+				<p class="eyebrow">Characters</p>
+				<ul class="footer-links">
+					<li><a href="ders.html" class="with-icon">Ders</a></li>
+					<li><a href="cirne.html" class="with-icon cirne">Cirne</a></li>
+					<li><a href="trale.html" class="with-icon trale">Trale</a></li>
+				</ul>
+			</div>
+
+			<div>
+				<p class="eyebrow">Connect</p>
+				<ul class="footer-links">
+					<li><a href="about.html">The Team</a></li>
+					<li><a href="https://www.instagram.com/revertices/">Instagram</a></li>
+					<li><a href="https://www.tiktok.com/@revertices">TikTok</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-footer__foot">
+		<p>&copy; <span id="current-year">2026</span> Revertices. All rights reserved.</p>
+
+		<div class="icons">
+			<a href="https://www.instagram.com/revertices/">
+				<img src="assets/media/img/icons/instagram.png" alt="Instagram">
+			</a>
+			<a href="https://www.tiktok.com/@revertices">
+				<img src="assets/media/img/icons/tiktok.png" alt="TikTok">
+			</a>
+			<a href="https://revertices.tumblr.com/">
+				<img src="assets/media/img/icons/tumblr.png" alt="Tumblr">
+			</a>
+		</div>
+
+		<!-- Get current year -->
+		<script>
+			date = new Date();
+			year = date.getFullYear();
+
+			document.getElementById("current-year").innerHTML = year;
+		</script>
+	</div>
+</footer>
+	<!-- @end footer -->
+</body>
+</html>

@@ -1,0 +1,1338 @@
+/* ==========================================================================
+components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
+========================================================================== */
+
+@layer components {
+	/* --- Site header ----------------------------------------------------- */
+	.site-header {
+		position: sticky;
+		width: 100%;
+		top: 0;
+		z-index: 50;
+		height: var(--header-h);
+		display: flex;
+		align-items: center;
+		background: linear-gradient(to bottom, black, #00000000);
+	}
+
+	/* Desktop: icons, logo, nav. Below 64rem: logo, nav. Below 48rem: logo, cta, menu. */
+	.site-header__inner {
+		width: 100%;
+		max-width: var(--content-max);
+		margin-inline: auto;
+		padding-inline: var(--space-5);
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+		gap: var(--space-5);
+	}
+
+	.survivor-btns {
+		grid-column: 1;
+		justify-self: start;
+	}
+
+	.site-logo {
+		grid-column: 2;
+		min-width: 0;
+
+		a {
+			display: block;
+		}
+
+		img {
+			width: auto;
+			height: auto;
+			/* Shrink logo without distorting */
+			max-width: 100%;
+			max-height: calc(var(--header-h) - 1rem);
+		}
+	}
+
+	.site-header .nav {
+		grid-column: 3;
+		justify-self: end;
+	}
+
+	.site-header .header-cta {
+		display: none;
+	}
+
+	.site-header .btn--primary {
+		white-space: nowrap;
+	}
+
+	@media (width < 64rem) {
+		.site-header__inner {
+			grid-template-columns: auto 1fr;
+		}
+
+		.site-header .survivor-btns {
+			display: none;
+		}
+
+		.site-logo {
+			grid-column: 1;
+		}
+
+		.site-header .nav {
+			grid-column: 2;
+		}
+	}
+
+	/* --- Primary nav ----------------------------------------------------- */
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.nav__link {
+		display: block;
+		padding: var(--space-2) var(--space-3);
+		color: var(--color-text-muted);
+		text-decoration: none;
+		font-size: var(--text-sm);
+		font-weight: 550;
+
+		&:hover {
+			color: var(--color-text);
+		}
+
+		&.with-icon {
+			padding-left: 0;
+		}
+	}
+
+	/* Active page highlight: ensure each page has <body data-page="…"> */
+	body[data-page="home"] .nav__link[data-nav="home"],
+	body[data-page="about"] .nav__link[data-nav="about"],
+	body[data-page="ders"] .nav__link[data-nav="ders"],
+	body[data-page="cirne"] .nav__link[data-nav="cirne"],
+	body[data-page="trale"] .nav__link[data-nav="trale"],
+	body[data-page="press"] .nav__link[data-nav="press"] {
+		color: var(--color-text);
+	}
+
+	/* Show the 'active' survivor button appearance */
+	body[data-page="ders"] .survivor-btn[data-survivor="ders"] .base,
+	body[data-page="trale"] .survivor-btn[data-survivor="trale"] .base,
+	body[data-page="cirne"] .survivor-btn[data-survivor="cirne"] .base {
+		opacity: 0;
+	}
+
+	body[data-page="about"] {
+		.nav__link.with-icon.trale::before {
+			background-image: url("../media/img/icons/UI_Trale_HP.png");
+			opacity: 1;
+		}
+	}
+
+	body[data-page="ders"]
+		.survivor-btn[data-survivor="ders"]
+		.when-page-active,
+	body[data-page="ders"] .survivor-btn[data-survivor="ders"],
+	body[data-page="trale"]
+		.survivor-btn[data-survivor="trale"]
+		.when-page-active,
+	body[data-page="trale"] .survivor-btn[data-survivor="trale"],
+	body[data-page="cirne"]
+		.survivor-btn[data-survivor="cirne"]
+		.when-page-active,
+	body[data-page="cirne"] .survivor-btn[data-survivor="cirne"] {
+		opacity: 1;
+	}
+
+	/* Mobile: collapse the nav behind a toggle */
+	.nav-toggle {
+		display: none;
+		background: none;
+		border: 1px solid var(--color-border);
+		padding: var(--space-2);
+		cursor: pointer;
+		color: var(--color-text);
+	}
+
+	@media (width < 48rem) {
+		/* No JS fallback: header grows, nav wraps beneath it */
+		.site-header {
+			height: auto;
+			padding-block: var(--space-2);
+		}
+
+		.site-header__inner {
+			grid-template-columns: minmax(0, 1fr) auto auto;
+			gap: var(--space-2) var(--space-3);
+			padding-inline: var(--space-4);
+		}
+
+		.site-logo img {
+			max-height: 3.5rem;
+		}
+
+		.site-header .header-cta {
+			display: flex;
+			grid-column: 2;
+		}
+
+		.site-header .nav {
+			grid-column: 1 / -1;
+			justify-self: stretch;
+			flex-wrap: wrap;
+		}
+
+		.nav__cta {
+			display: none;
+		}
+
+		/* With JS: fixed-height header, nav becomes a dropdown */
+		.js .site-header {
+			height: var(--header-h);
+			padding-block: 0;
+		}
+		.js .nav-toggle {
+			display: grid;
+			place-items: center;
+			grid-column: 3;
+		}
+
+		.js .nav {
+			position: absolute;
+			inset-inline: 0;
+			top: var(--header-h);
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0;
+			padding: var(--space-3);
+			background: var(--color-bg-raised);
+			border-bottom: 1px solid var(--color-border);
+			box-shadow: var(--shadow);
+		}
+
+		.js .nav[data-open="false"] {
+			display: none;
+		}
+
+		.nav__link {
+			padding: var(--space-3) var(--space-4);
+		}
+	}
+
+	/* --- Buttons --------------------------------------------------------- */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-5);
+		border: 1px solid transparent;
+		font-size: var(--text-sm);
+		text-decoration: none;
+		cursor: pointer;
+		position: relative;
+		transition:
+			transform var(--duration) var(--ease),
+			background-color var(--duration) var(--ease),
+			border-color var(--duration) var(--ease),
+			opacity var(--duration-slow) var(--ease);
+
+		.hover {
+			opacity: 0;
+		}
+
+		&:hover .hover,
+		&.active .hover {
+			opacity: 1;
+		}
+
+		&:active {
+			transform: none;
+		}
+
+		&.survivor-btn {
+			opacity: 0.5;
+
+			.when-page-active {
+				opacity: 0;
+			}
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		img {
+			position: absolute;
+			display: inline-block;
+		}
+	}
+
+	.btn--primary {
+		background: black;
+		color: var(--color-text);
+
+		/* Auto layout */
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		padding: var(--space-1) var(--space-5);
+		gap: var(--space-2);
+
+		background: #000000;
+		border-width: 1px 0px 0px 1px;
+		border-style: solid;
+		border-color: #ffffff;
+
+		/* Inside auto layout */
+		flex: none;
+		order: 0;
+		flex-grow: 0;
+		padding-right: calc(var(--space-5) + 1.25rem);
+
+		/* Before/After have the "moving eye" by fading between two SVGs */
+		&::after,
+		&::before {
+			content: "";
+			position: absolute;
+			right: calc(1rem);
+			width: 1.4rem;
+			height: 1rem;
+			transition: opacity var(--duration) var(--ease);
+		}
+
+		&::after {
+			opacity: 1;
+			background: url("../media/svg/btns/eye_default.svg") no-repeat;
+		}
+
+		&::before {
+			background: url("../media/svg/btns/eye_left.svg") no-repeat;
+			opacity: 0;
+		}
+
+		&:hover {
+			background: var(--color-ders-red);
+
+			&::after {
+				opacity: 0;
+			}
+
+			&::before {
+				opacity: 1;
+			}
+		}
+
+		&.trale-accent:hover {
+			background: var(--color-trale-blue);
+		}
+
+		&.cirne-accent:hover {
+			background: var(--color-cirne-green);
+		}
+	}
+
+	.btn--ghost {
+		border-color: var(--color-border);
+		color: var(--color-text);
+		background: transparent;
+
+		&:hover {
+			border-color: var(--color-accent);
+			color: var(--color-accent);
+		}
+	}
+
+	.btn-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-3);
+		margin-top: var(--space-6);
+	}
+
+	.with-icon {
+		&::before {
+			content: "";
+			display: inline-block;
+			background: url("../media/img/icons/UI_Ders_HP_Empty.png") no-repeat;
+			opacity: 0.5;
+			margin-right: var(--space-1);
+			transition: opacity var(--duration-slow) var(--ease);
+			height: 1rem;
+			width: 1rem;
+			background-size: contain;
+			vertical-align: middle;
+		}
+
+		&:hover::before,
+		&.active::before {
+			background-image: url("../media/img/icons/UI_Ders_HP.png");
+			opacity: 1;
+		}
+
+		&.cirne::before {
+			background-image: url("../media/img/icons/UI_Cirne_HP_Empty.png");
+		}
+
+		&.trale::before {
+			background-image: url("../media/img/icons/UI_Trale_HP_Empty.png");
+		}
+
+		&.cirne:hover::before,
+		&.cirne.active::before {
+			background-image: url("../media/img/icons/UI_Cirne_HP.png");
+		}
+
+		&.trale:hover::before,
+		&.trale.active::before {
+			background-image: url("../media/img/icons/UI_Trale_HP.png");
+		}
+	}
+
+	.panel--survivors .btn-row {
+		justify-content: center;
+	}
+
+	.survivor-btns {
+		display: inline-flex;
+		gap: 1rem;
+	}
+
+	.eyebrow {
+		text-transform: uppercase;
+		font-size: var(--text-sm);
+		/* TODO: the base font doesn't seem to have a light weight */
+		font-weight: 300;
+	}
+
+	/* --- Section headings ------------------------------------------------ */
+	.section-head {
+		display: grid;
+		gap: var(--space-3);
+		margin-bottom: var(--space-7);
+		max-width: var(--measure);
+
+		&.full {
+			max-width: 900px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.eyebrow {
+			text-transform: uppercase;
+			font-family: var(--font-mono);
+			font-size: var(--text-sm);
+			font-weight: 300;
+		}
+	}
+
+	.panel--survivors .section-head,
+	.section-head--center {
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	.lede {
+		font-size: var(--text-lg);
+		color: var(--color-text-muted);
+		max-width: var(--measure);
+
+		&.full {
+			max-width: 100%;
+		}
+	}
+
+	.main-text {
+		font-size: var(--text-lg);
+		max-width: var(--measure);
+		margin: auto;
+	}
+
+	.panel--survivors .lede {
+		margin-inline: auto;
+	}
+
+	/* --- Fancy Cards --------------------------------------------------- */
+	.card {
+		background: var(--color-bg);
+		border: 4px solid var(--color-border);
+		padding: var(--space-5);
+		display: block;
+		position: relative;
+
+		/* Skew container handles the visuals, see skew.css */
+		&.skewed-container,
+		&.skewed-host {
+			background: none;
+			border: none;
+		}
+
+		&:hover {
+			border-color: color-mix(
+				in srgb,
+				var(--color-accent) 50%,
+				var(--color-border)
+			);
+		}
+	}
+
+	.panel--raised .card {
+		background: var(--color-bg-sunken);
+	}
+
+	.card__icon {
+		width: 2.25rem;
+		height: 2.25rem;
+		color: var(--color-accent);
+	}
+
+	.card h3 {
+		font-size: var(--text-lg);
+	}
+	.card p {
+		color: var(--color-text-muted);
+		font-size: var(--text-sm);
+	}
+
+	/* --- Screenshot gallery ---------------------------------------------- */
+	/* This would just be if we got stuff on the press page idk */
+	.gallery {
+		display: grid;
+		gap: var(--space-4);
+		grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+	}
+
+	.gallery__item {
+		padding: 0;
+		border: 1px solid var(--color-border);
+		overflow: clip;
+		background: var(--color-bg-sunken);
+		cursor: zoom-in;
+		transition:
+			border-color var(--duration) var(--ease),
+			transform var(--duration) var(--ease);
+
+		&:hover {
+			border-color: var(--color-accent);
+			transform: translateY(-2px);
+		}
+	}
+
+	/* --- Section dot nav ----------------------------- */
+	.dot-nav {
+		position: fixed;
+		right: var(--space-5);
+		top: 50%;
+		translate: 0 -50%;
+		z-index: 40;
+		display: grid;
+		gap: var(--space-3);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.dot-nav__link {
+		display: block;
+		width: 0.7rem;
+		height: 0.7rem;
+		border: 1px solid var(--color-text-faint);
+		background: transparent;
+		transition:
+			background-color var(--duration) var(--ease),
+			border-color var(--duration) var(--ease),
+			scale var(--duration) var(--ease);
+
+		&:hover {
+			border-color: var(--color-accent);
+			background: var(--color-accent);
+		}
+	}
+
+	.dot-nav__link[aria-current="true"] {
+		background: var(--color-accent);
+		border-color: var(--color-accent);
+		scale: 1.3;
+	}
+
+	/* Hide on small screens */
+	@media (width < 60rem) {
+		.dot-nav {
+			display: none;
+		}
+	}
+
+	/* --- Survivor Select ------------------------------------------------- */
+	/* These need to get tweaked for different screen sizes */
+	:root {
+		--eye-w: min(45%, 36rem);
+	}
+
+	.panel--select {
+		--survivor-scale: 1;
+	}
+
+	/* Crops from the right so the pupil (left edge) always stays visible */
+	.panel-eye-bg,
+	.survivor-eye {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: var(--eye-w);
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		object-position: left center;
+		user-select: none;
+
+		&.reversed {
+			transform: scaleX(-1);
+			right: unset;
+			left: 0;
+		}
+	}
+
+	.panel-eye-bg {
+		z-index: 2;
+
+		&.eyeball {
+			z-index: 0;
+		}
+	}
+
+	.survivor-eye {
+		container-type: size;
+		overflow: hidden;
+		pointer-events: none;
+		filter: drop-shadow(-10px -10px 20px black);
+
+		&.reversed {
+			filter: drop-shadow(10px -10px 20px black);
+		}
+	}
+
+	/* Match object-fit: cover for both image layers and the video mask. */
+	.survivor-eye__layers {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		translate: 0 -50%;
+		width: max(100cqw, 93.215859cqh);
+		height: max(100cqh, 107.277883cqw);
+	}
+
+	.survivor-eye__eyeball,
+	.survivor-eye__eyelid,
+	.survivor-eye__videos {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+	}
+
+	.survivor-eye__videos {
+		mask-image: url("../media/img/polygonalentity-eye_eye_1_zoomed.png");
+		mask-size: 100% 100%;
+		mask-repeat: no-repeat;
+	}
+
+	@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+		.survivor-eye__eyeball {
+			rotate: var(--eye-rotation, 0deg);
+			/* Centre of the illustrated sphere, not the cropped image canvas. */
+			transform-origin: 71% 54%;
+			transition: rotate 700ms ease-out;
+		}
+	}
+
+	/* These are just magic numbers to position the video within the eye */
+	.survivor-video {
+		position: absolute;
+		left: 9%;
+		top: 24%;
+		width: 74%;
+		height: 59%;
+		object-fit: cover;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: opacity var(--duration-slow) var(--ease);
+
+		&.is-active {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.panel--survivors .survivor-select {
+		max-width: none;
+		margin: 0;
+		width: calc(100% - var(--eye-w));
+		display: grid;
+		justify-items: center;
+		gap: var(--space-6);
+	}
+
+	/* Keeps better layout when zooming */
+	.survivors {
+		display: flex;
+		gap: var(--space-6);
+		zoom: var(--survivor-scale);
+	}
+
+	.survivor-bubble {
+		color: var(--color-text);
+		border-radius: 9999px; /* Circle */
+
+		/* Sprite size, change this if we have dif sprites perhaps so they size/scale well */
+		width: 194px;
+		height: 194px;
+		text-decoration: none;
+		transition:
+			background-color var(--duration-slow) var(--ease),
+			box-shadow var(--duration-slow) var(--ease);
+
+		/* background: color-mix(
+			in srgb,
+			var(--color-bubble) 25%,
+			var(--color-bg-raised)
+		);
+		box-shadow:
+			inset 0 0 0 1px
+				color-mix(
+					in srgb,
+					var(--color-bubble) 30%,
+					var(--color-bg-raised)
+				),
+			inset 0 2px 10px
+				color-mix(in srgb, var(--color-text) 12%, transparent),
+			0 0 24px color-mix(in srgb, var(--color-accent) 14%, transparent); */
+
+		position: relative;
+		isolation: isolate;
+		overflow: clip;
+
+		&::before {
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
+			background: radial-gradient(
+				circle at 30% 20%,
+				var(--color-text) 0,
+				var(--color-bubble) 35%,
+				transparent 75%
+			);
+			content: "";
+			opacity: 0;
+			transition: opacity var(--duration) var(--ease);
+		}
+
+		&:hover,
+		&:focus-visible {
+			background: var(--color-bubble);
+			outline-color: var(--color-accent);
+			box-shadow:
+				inset 0 0 0 1px
+					color-mix(in srgb, var(--color-accent) 55%, transparent),
+				inset 0 2px 10px
+					color-mix(in srgb, var(--color-accent) 20%, transparent),
+				0 0 24px
+					color-mix(in srgb, var(--color-accent) 25%, transparent);
+
+			&::before {
+				opacity: 0.34;
+			}
+		}
+
+		&:nth-child(odd) {
+			margin-top: 30%;
+		}
+
+		label {
+			color: var(--color-text);
+			background: var(--color-bg-opacity-50);
+			width: fit-content;
+			margin-inline: auto;
+			padding-inline: var(--space-2);
+			border-radius: var(--space-1);
+			text-shadow: 0 1px 3px var(--color-bg-sunken);
+			font-size: var(--text-xl);
+			margin-top: -2.5rem;
+			display: block;
+		}
+	}
+
+	.panel--team-info {
+		img.panel-eye-bg {
+			/* This could be finessed more but works for now */
+			left: calc(-1 * var(--eye-w) / 3);
+		}
+	}
+
+	.panel--team-info .panel__inner {
+		width: auto;
+		position: relative;
+		background: #0d0d0d78;
+		box-shadow: 0 50px 100px #0d0d0d78;
+		/* Margin to account for the eye width so it isn't overlapped at different sizes */
+		margin-left: calc(var(--eye-w) - var(--eye-w) / 3);
+
+		table ul {
+			list-style-type: none;
+			font-family: var(--font-mono);
+			font-size: var(--text-base);
+		}
+
+		table td {
+			vertical-align: top;
+			text-align: left;
+			font-size: var(--text-lg);
+
+			&:first-of-type {
+				line-height: 1;
+				letter-spacing: 0.025em;
+			}
+
+			padding-bottom: var(--space-4);
+		}
+
+		table.team-table {
+			border-collapse: collapse;
+		}
+	}
+
+	@media (width < 80rem) {
+		.panel--select {
+			--survivor-scale: 0.75;
+		}
+	}
+
+	@media (width < 64rem) {
+		.panel--select {
+			--survivor-scale: 0.55;
+			align-content: start;
+			padding-block-start: calc(var(--header-h) + var(--space-6));
+		}
+	}
+
+	/* Narrow: the shapes becomes a zigzag column */
+	@media (width < 48rem) {
+		.panel--select {
+			--eye-w: 42%;
+			--survivor-scale: 0.6;
+		}
+
+		.panel--survivors .survivor-select {
+			width: 100%;
+			justify-items: start;
+		}
+
+		.survivor-select h1 {
+			text-align: start;
+		}
+
+		.panel-eye-bg {
+			top: auto;
+			bottom: 0;
+			height: 80%;
+		}
+
+		.survivors {
+			flex-direction: column;
+			gap: var(--space-4);
+		}
+
+		.survivor-bubble:nth-child(odd) {
+			margin-top: 0;
+		}
+
+		.survivor-bubble:nth-child(even) {
+			margin-inline-start: 5rem;
+		}
+	}
+
+	@media (width < 24rem) {
+		.panel--select {
+			--survivor-scale: 0.5;
+		}
+	}
+
+	/* Two frames */
+	@keyframes spriteSheet2 {
+		0% {
+			background-position-x: 0;
+		}
+		50% {
+			background-position-x: -195px;
+		}
+	}
+
+	/* Three frames */
+	@keyframes spriteSheet3 {
+		0% {
+			background-position-x: 0;
+		}
+		30% {
+			background-position-x: -195px;
+		}
+		60% {
+			background-position-x: -390px;
+		}
+	}
+
+	/* Four frames */
+	@keyframes spriteSheet4 {
+		0% {
+			background-position-x: 0;
+		}
+		35% {
+			background-position-x: -195px;
+		}
+		70% {
+			background-position-x: -390px;
+		}
+		100% {
+			background-position-x: -585px;
+		}
+	}
+
+	.sprite-sheet {
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		width: 176px;
+		height: 194px;
+		margin-top: -8px;
+		animation-timing-function: step-end;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		filter: drop-shadow(-2px -2px white);
+
+		&.damaged {
+			animation-duration: 1000ms;
+			animation-name: spriteSheet2;
+		}
+
+		&.ders.damaged {
+			background-image: url("../media/img/sheets/red-damage-sheet.png");
+			animation-delay: 300ms;
+		}
+
+		&.cirne.damaged {
+			background-image: url("../media/img/sheets/green-damage-sheet.png");
+		}
+
+		&.trale.damaged {
+			background-image: url("../media/img/sheets/blue-damage-sheet.png");
+		}
+
+		&.idle {
+			animation-duration: 800ms;
+			animation-name: spriteSheet4;
+			transform: scale(2);
+			image-rendering: pixelated;
+			margin: auto;
+		}
+
+		&.ders.idle {
+			background-image: url("../media/img/sheets/red-idle-sheet.png");
+		}
+
+		&.cirne.idle {
+			background-image: url("../media/img/sheets/green-idle-sheet.png");
+			/* Cirne has fewer frames */
+			animation-name: spriteSheet3;
+			animation-duration: 800ms;
+		}
+
+		&.trale.idle {
+			background-image: url("../media/img/sheets/blue-idle-sheet.png");
+		}
+	}
+
+	/* --- Trailer --------------------------------------------------------- */
+	.panel--trailer {
+		justify-items: center;
+		overflow: clip;
+	}
+
+	.trailer__video {
+		z-index: 1;
+		opacity: 1;
+		object-fit: contain;
+		background: black;
+	}
+
+	.skewed-image-btn {
+		--skew-pad: var(--space-4) var(--space-6);
+
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-4);
+		color: var(--color-text);
+		font-family: var(--font-display);
+		font-size: var(--text-3xl);
+		line-height: 1;
+		text-decoration: none;
+
+		img {
+			width: 0.75em;
+			height: 0.75em;
+			flex: none;
+		}
+
+		&:hover {
+			color: var(--color-text);
+			--color-skew-surface: var(--color-ders-red);
+		}
+	}
+
+	.play-btn {
+		cursor: pointer;
+	}
+
+	/* Icon only on narrow screens */
+	@media (width < 48rem) {
+		.play-btn {
+			--skew-pad: var(--space-4) var(--space-5);
+		}
+
+		/* Still readable by screenreaders */
+		.play-btn__label {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip-path: inset(50%);
+			white-space: nowrap;
+		}
+	}
+
+	/* Guestbook styling piggy backs on the trailer */
+
+	.panel--guestbook {
+		justify-items: center;
+		align-content: start;
+
+		.section-head {
+			z-index: 1;
+			background: var(--color-bg);
+			padding: 0 var(--space-5);
+		}
+
+		&::before {
+			background-color: white;
+			background-image: var(--bg-pattern);
+			background-size: var(--bg-pattern-size);
+			background-repeat: repeat;
+		}
+
+		img {
+			opacity: 1;
+			filter: drop-shadow(-5px 5px var(--color-bg-opacity-50));
+		}
+	}
+
+	/* --- Feature panels: full-bleed image filling the panel height, text beside it --- */
+	.feature {
+		padding-block: 0;
+		align-content: stretch;
+		overflow: clip;
+	}
+
+	.feature__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+		min-height: 100dvh;
+		max-width: none;
+		padding-inline: 0;
+	}
+
+	.feature--reverse {
+		.feature__inner {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+		}
+
+		.feature__text {
+			order: 1;
+		}
+	}
+
+	.feature__text {
+		align-self: center;
+		justify-self: center;
+		display: grid;
+		gap: var(--space-4);
+		max-width: 32rem;
+		padding: var(--space-7) var(--space-6);
+		font-family: var(--font-mono);
+		font-weight: 300;
+		color: var(--color-text);
+		position: relative;
+
+		.icon-divide h2 {
+			text-align: center;
+		}
+
+		.icon-divide img {
+			margin: auto;
+
+			background-image: var(--bg-pattern);
+			background-color: var(--color-bg);
+			background-size: var(--bg-pattern-size);
+			background-repeat: repeat;
+
+			box-sizing: content-box;
+			position: relative;
+			max-width: var(--text-3xl);
+			padding-inline: var(--space-4);
+		}
+
+		.icon-divide .divider {
+			position: relative;
+		}
+
+		.icon-divide .divider::before {
+			content: "";
+			width: 100%;
+			border-bottom: 1px solid white;
+			display: block;
+			position: absolute;
+			top: 50%;
+			z-index: -1;
+		}
+
+		ul {
+			display: grid;
+			gap: var(--space-2);
+			padding-inline-start: var(--space-5);
+		}
+	}
+
+	.feature__inner {
+		figure {
+			position: relative;
+		}
+
+		figcaption {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+			font-family: var(--font-mono);
+		}
+	}
+
+	/* Fills the stretched grid row; probs needs to be tweaked idk */
+	.feature__media {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* --- Team ------------------------------------------------------------ */
+	.team {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-items: center;
+		gap: var(--space-7);
+	}
+
+	.team__text {
+		display: grid;
+		justify-items: start;
+		gap: var(--space-4);
+		color: var(--color-text);
+
+		p {
+			font-family: var(--font-mono);
+			font-weight: 300;
+		}
+
+		.btn {
+			margin-top: var(--space-5);
+		}
+	}
+
+	.team__logos {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-5);
+
+		img {
+			max-width: 85%;
+
+			&:nth-child(2) {
+				align-self: flex-end;
+			}
+
+			&.snotwurm-logo {
+				max-width: 50%;
+			}
+		}
+	}
+
+	@media (width < 48rem) {
+		.feature__inner,
+		.feature--reverse .feature__inner,
+		.team {
+			grid-template-columns: minmax(0, 1fr);
+			gap: var(--space-5);
+		}
+
+		.feature--reverse .feature__text {
+			order: 0;
+		}
+
+		.feature__inner {
+			min-height: auto;
+		}
+
+		.feature__text {
+			justify-self: stretch;
+			padding: var(--space-7) var(--space-5) 0;
+			margin: auto;
+		}
+
+		.feature__media {
+			height: auto;
+			aspect-ratio: 4 / 3;
+		}
+	}
+
+	/* --- Prose (detail pages). may not need this much -------------------------------------------- */
+	.prose {
+		max-width: var(--measure);
+
+		& > * + * {
+			margin-top: var(--space-4);
+		}
+
+		& h2 {
+			margin-top: var(--space-7);
+		}
+		& h3 {
+			margin-top: var(--space-6);
+		}
+
+		& ul,
+		& ol {
+			padding-left: var(--space-5);
+			display: grid;
+			gap: var(--space-2);
+		}
+
+		& li::marker {
+			color: var(--color-accent);
+		}
+
+		& blockquote {
+			border-left: 3px solid var(--color-accent);
+			padding-left: var(--space-4);
+			color: var(--color-text-muted);
+			font-style: italic;
+		}
+
+		& dl {
+			display: grid;
+			gap: var(--space-3);
+		}
+		& dt {
+			font-weight: 650;
+			color: var(--color-text);
+		}
+		& dd {
+			margin: 0;
+			color: var(--color-text-muted);
+		}
+	}
+
+	.page-head {
+		padding-block: var(--space-6);
+		border-bottom: 1px solid var(--color-border);
+		background: var(--color-bg-raised);
+	}
+
+	/* --- Footer ---------------------------------------------------------- */
+	.site-footer {
+		/* background: radial-gradient(
+			ellipse 50% 50%,
+			var(--color-bg-raised-opacity-50),
+			var(--color-bg-opacity-50)
+		); */
+
+		padding-top: var(--space-6);
+		padding-bottom: var(--space-4);
+	}
+
+	.site-footer__inner {
+		max-width: var(--content-max);
+		margin-inline: auto;
+		padding-inline: var(--space-5);
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-6);
+		align-items: center;
+		justify-content: space-between;
+
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+		font-size: var(--text-base);
+
+		.site-footer__link-lists {
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--space-6);
+			justify-content: end;
+		}
+
+		.eyebrow {
+			font-size: var(--text-base);
+			color: var(--color-text-muted);
+		}
+	}
+
+	.site-footer__foot {
+		margin-top: var(--space-4);
+		padding: var(--space-4);
+		padding-bottom: 0;
+		text-align: center;
+		border-top: 1px solid var(--color-border);
+		display: flex;
+		justify-content: space-between;
+
+		a > img {
+			display: inline-block;
+			width: 1.5em;
+			height: 1.5em;
+		}
+	}
+
+	.site-footer a {
+		font-family: var(--font-mono);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--color-accent);
+		}
+	}
+
+	.footer-links {
+		gap: var(--space-4);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.snap .site-footer {
+		scroll-snap-align: none;
+	}
+}

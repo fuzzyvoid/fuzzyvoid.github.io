@@ -1,0 +1,143 @@
+/* ==========================================================================
+panels.css: the full-viewport scrolling sections on the landing page
+
+Snapping is scoped to <html class="snap">, so add/remove that as-needed. It's kinda annoying so idk if we'll keep it
+========================================================================== */
+
+@layer panels {
+	/* Should live on root container to not mess w/ the nav */
+	.snap {
+		/* 'mandatory' can trap keyboard scrolling and makes a panel taller than the viewport partly unreachable */
+		scroll-snap-type: y proximity;
+		scroll-behavior: smooth;
+
+		scroll-padding-top: 0;
+
+		#main {
+			overflow: clip;
+		}
+		#main section:first-of-type {
+			margin-top: calc(-1 * var(--header-h));
+
+			&:not(.panel--survivors) {
+				padding-top: var(--header-h);
+			}
+		}
+	}
+
+	/* --- A single panel -------------------------------------------------- */
+	.panel {
+		/* Using dvh accounts for mobile/scroll friendliness */
+		min-height: 100dvh;
+		scroll-snap-align: start;
+		display: grid;
+		align-content: center;
+		position: relative;
+		padding-block: var(--space-6) var(--space-7);
+	}
+
+	/* Opt out of full viewport height for short sections. */
+	.panel--auto {
+		min-height: auto;
+		padding-block: var(--space-9);
+		scroll-snap-align: none;
+	}
+
+	.panel__inner {
+		width: 100%;
+		max-width: var(--content-max);
+		margin-inline: auto;
+		padding-inline: var(--space-5);
+	}
+
+	/* --- Survivors ------------------------------------------------------------ */
+	.panel--survivors {
+		overflow: clip;
+		text-align: center;
+	}
+
+	.with-panel-bg::before {
+		content: "";
+		background: var(--color-bg);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	/* Background media sits behind the hero text, dimmed for contrast. */
+	.panel__bg {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+		opacity: 0.35;
+		user-select: none;
+	}
+
+	.panel--survivors .panel__inner {
+		position: relative;
+		z-index: 1;
+	}
+
+	/* --- Reveal on scroll -------------------------------------------------
+	Note: .reveal content is fully visible by default and the animation only ever adds motion. Check for support first since it may not be usable
+     -------------------------------------------------------------------- */
+	@media (prefers-reduced-motion: no-preference) {
+		@supports (animation-timeline: view()) {
+			.reveal {
+				animation: reveal-rise linear both;
+				animation-timeline: view();
+				animation-range: entry 5% cover 30%;
+			}
+
+			/* Allow for staggered animations (i.e. nested elements) */
+			.reveal--late {
+				animation-range: entry 12% cover 42%;
+			}
+		}
+	}
+
+	@keyframes reveal-rise {
+		from {
+			opacity: 0;
+			transform: translateY(1.75rem);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	/* --- Scroll cue ------------------------------------------------------ */
+	.scroll-cue {
+		position: absolute;
+		bottom: var(--space-5);
+		left: 50%;
+		translate: -50% 0;
+		z-index: 1;
+		color: var(--color-text-muted);
+		font-size: var(--text-xs);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		text-decoration: none;
+		display: grid;
+		justify-items: center;
+		gap: var(--space-1);
+	}
+
+	.scroll-cue img {
+		animation: cue-bob 2.4s var(--ease) infinite;
+	}
+
+	@keyframes cue-bob {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(5px);
+		}
+	}
+}

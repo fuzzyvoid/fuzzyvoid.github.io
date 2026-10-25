@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- @include head - shared for every page; do not edit here. Edit _partials/head.html, then run: node tools/sync.mjs -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#111">
+	<meta name="robots" content="noimageai">
+	<meta name="robots" content="noai">
+
+	<link rel="icon" href="assets/favicon.png" type="image/x-icon">
+
+	<!-- maintain order: theme.css; base; any other files -->
+	<link rel="stylesheet" href="assets/css/theme.css">
+	<link rel="stylesheet" href="assets/css/base.css">
+	<link rel="stylesheet" href="assets/css/panels.css">
+	<link rel="stylesheet" href="assets/css/components.css">
+	<link rel="stylesheet" href="assets/css/skew.css">
+	<link rel="stylesheet" href="assets/css/transitions.css">
+
+	<!-- allows for CSS fallbacks when there's no JS -->
+	<script>document.documentElement.classList.add('js');</script>
+
+	<!-- site.js must load before alpine.min.js -->
+	<script defer src="assets/js/site.js"></script>
+	<script defer src="assets/js/vendor/alpine.min.js"></script>
+	<!-- @end head -->
+
+	<!-- Page-specific -->
+	<title>Press Kit - Revertices</title>
+	<meta name="description" content="Fact sheet, screenshots, logos and contact details for Revertices.">
+	<link rel="canonical" href="https://revertices.com/press">
+
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="Revertices">
+	<meta property="og:title" content="Press Kit - Revertices">
+	<meta property="og:description" content="Fact sheet, screenshots, logos and contact details.">
+	<meta property="og:url" content="https://revertices.com/press">
+	<meta property="og:image" content="https://revertices.com/assets/media/img/logo-clean.png">
+	<meta property="og:image:width" content="1264">
+	<meta property="og:image:height" content="648">
+	<meta property="og:image:alt" content="The Revertices logo: the word 'Revertices' covered with ooze with eyeballs.">
+	<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body data-page="press">
+	<!-- @include header - shared for every page; do not edit here. Edit _partials/header.html, then run: node tools/sync.mjs -->
+<!-- Alpine data/events are for opening/closing menu in mobile view -->
+<header
+	class="site-header"
+	x-data="{ open: false }"
+	@keydown.escape="open = false"
+>
+	<div class="site-header__inner">
+		<div class="survivor-btns">
+			<a class="btn survivor-btn" data-survivor="ders" href="ders.html">
+				<img
+					class="base"
+					src="assets/media/img/btns/UI_Ders_Head.png"
+					alt="Ders Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="hover"
+					src="assets/media/img/btns/UI_Ders_Head_Hurt.png"
+					alt="Ders Icon Button"
+					width="64"
+					height="64"
+				>
+				<img class="when-page-active"
+					src="assets/media/img/btns/UI_Ders_Head_Heal.png"
+					alt="Ders Icon Button"
+					width="64"
+					height="64"
+				>
+			</a>
+			<a class="btn survivor-btn" data-survivor="cirne" href="cirne.html">
+				<img
+					class="base"
+					src="assets/media/img/btns/UI_Cirne_Head.png"
+					alt="Cirne Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="hover"
+					src="assets/media/img/btns/UI_Cirne_Head_Heal.png"
+					alt="Cirne Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="when-page-active"
+					src="assets/media/img/btns/UI_Cirne_Head_Heal.png"
+					alt="Cirne Icon Button"
+					width="64"
+					height="64"
+				>
+			</a>
+			<a class="btn survivor-btn" data-survivor="trale" href="trale.html">
+				<img
+					class="base"
+					src="assets/media/img/btns/UI_Trale_Head.png"
+					alt="Trale Icon Button"
+					width="64"
+					height="64"
+				>
+				<img
+					class="hover"
+					src="assets/media/img/btns/UI_Trale_Head_Hurt.png"
+					alt="Trale Icon Button"
+					width="64"
+					height="64"
+				>
+				<img class="when-page-active"
+					src="assets/media/img/btns/UI_Trale_Head_Heal.png"
+					alt="Trale Icon Button"
+					width="64"
+					height="64"
+				>
+			</a>
+		</div>
+
+		<div class="site-logo">
+			<a href="index.html">
+				<img
+					src="assets/media/img/logo-clean.png"
+					alt="Revertices Logo"
+				>
+			</a>
+		</div>
+
+		<!-- Shown below 48rem instead of in the menu, keeping CTA visible -->
+		<a
+			class="btn btn--primary header-cta"
+			href="https://store.steampowered.com/app/3236560/Revertices/"
+		>Wishlist</a>
+
+		<button
+			class="nav-toggle"
+			type="button"
+			aria-controls="primary-nav"
+			:aria-expanded="open ? 'true' : 'false'"
+			@click="open = !open"
+		>
+			<span class="visually-hidden">Menu</span>
+			<img src="assets/media/svg/burger-menu.svg" width="22" height="22"/>
+		</button>
+
+		<!-- data-open is always a string to persist the attribute. CSS hides this when BOTH .js is present and the viewport is narrow, so menu is still usable with no JS on mobile -->
+		<ul class="nav"
+			id="primary-nav"
+			:data-open="open ? 'true' : 'false'"
+			@click="open = false"
+		>
+			<li>
+				<a
+					class="nav__link with-icon"
+					href="https://fuzzyvoidco.itch.io/revertices"
+				>Itch</a>
+			</li>
+			<li>
+				<a
+					class="nav__link with-icon cirne"
+					href="https://store.steampowered.com/app/3236560/Revertices/"
+				>Steam</a>
+			</li>
+			<li>
+				<a
+					class="nav__link with-icon trale"
+					data-nav="about"
+					href="about.html"
+				>About</a>
+			</li>
+
+
+			<li class="nav__cta">
+				<a
+					class="btn btn--primary"
+					href="https://store.steampowered.com/app/3236560/Revertices/"
+				>Wishlist</a>
+			</li>
+		</ul>
+	</div>
+</header>
+	<!-- @end header -->
+
+<main id="main">
+	<div class="page-head">
+		<div class="wrap">
+			<p class="eyebrow">Press</p>
+			<h1>Press kit</h1>
+		</div>
+	</div>
+	<div class="page-body">
+		<div class="wrap">
+			<div class="prose">
+				<!-- TODO: actual email -->
+				<!-- <p class="lede">Go at it! If you need more, contact <a href="mailto:press@revertices.com">press@revertices.com</a>.</p> -->
+
+				<h2>Fact sheet</h2>
+
+				<dl>
+					<dt>Title</dt>
+					<dd>Revertices</dd>
+
+					<dt>Developer</dt>
+					<dd>Fuzzy Void</dd>
+
+					<dt>Release</dt>
+					<dd>November 2026</dd>
+
+					<dt>Platforms</dt>
+					<dd>PC (Steam)</dd>
+
+					<dt>Genre</dt>
+					<dd>2D Action Side-scroller</dd>
+
+					<dt>Length</dt>
+					<dd>Some amount of time</dd>
+
+					<dt>Price</dt>
+					<dd>TBA</dd>
+
+					<dt>Languages</dt>
+					<dd>English</dd>
+				</dl>
+
+				<h2>Description</h2>
+
+				<p>Revertices is a 2D side-scrolling action combat game where you must choose a lone survivor! Your survivor fight the corrupted remains of their two beloved friends. You will witness different facets of the story, gameplay, and character relationships in each route.</p>
+			</div>
+
+			<h2 style="margin-top: var(--space-7);">Screenshots</h2>
+
+			<div class="gallery">
+				<a class="gallery__item" href="assets/media/img/screenshots/ders-action.png">
+				<img src="assets/media/img/screenshots/ders-action.png" width="1600" height="900" loading="lazy" decoding="async">
+				</a>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- @include footer - shared for every page; do not edit here. Edit _partials/footer.html, then run: node tools/sync.mjs -->
+<footer class="site-footer">
+	<div class="site-footer__inner">
+		<div>
+			<a href="index.html">
+				<img src="assets/media/img/logo-clean.png" alt="Revertices Logo">
+			</a>
+		</div>
+
+		<div class="site-footer__link-lists">
+			<div>
+				<p class="eyebrow">Play the Game</p>
+				<ul class="footer-links">
+					<li><a href="https://store.steampowered.com/app/3236560/Revertices/">Steam</a></li>
+					<li><a href="https://fuzzyvoidco.itch.io/revertices">Itch</a></li>
+					<!-- If we need these? -->
+					<!-- <li><a href="press.html">Press Kit</a></li> -->
+					<!-- <li><a href="mailto:hello@revertices.com">Contact</a></li> -->
+				</ul>
+			</div>
+
+			<div>
+				<p class="eyebrow">Characters</p>
+				<ul class="footer-links">
+					<li><a href="ders.html" class="with-icon">Ders</a></li>
+					<li><a href="cirne.html" class="with-icon cirne">Cirne</a></li>
+					<li><a href="trale.html" class="with-icon trale">Trale</a></li>
+				</ul>
+			</div>
+
+			<div>
+				<p class="eyebrow">Connect</p>
+				<ul class="footer-links">
+					<li><a href="about.html">The Team</a></li>
+					<li><a href="https://www.instagram.com/revertices/">Instagram</a></li>
+					<li><a href="https://www.tiktok.com/@revertices">TikTok</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-footer__foot">
+		<p>&copy; <span id="current-year">2026</span> Revertices. All rights reserved.</p>
+
+		<div class="icons">
+			<a href="https://www.instagram.com/revertices/">
+				<img src="assets/media/img/icons/instagram.png" alt="Instagram">
+			</a>
+			<a href="https://www.tiktok.com/@revertices">
+				<img src="assets/media/img/icons/tiktok.png" alt="TikTok">
+			</a>
+			<a href="https://revertices.tumblr.com/">
+				<img src="assets/media/img/icons/tumblr.png" alt="Tumblr">
+			</a>
+		</div>
+
+		<!-- Get current year -->
+		<script>
+			date = new Date();
+			year = date.getFullYear();
+
+			document.getElementById("current-year").innerHTML = year;
+		</script>
+	</div>
+</footer>
+	<!-- @end footer -->
+</body>
+</html>

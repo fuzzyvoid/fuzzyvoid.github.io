@@ -1,0 +1,79 @@
+/* ==========================================================================
+theme.css: every colour, size and timing the site uses. I generally try to use these
+========================================================================== */
+
+:root {
+	color-scheme: dark;
+
+	/* --- Colour ----------------------------------------------------------- */
+	--color-bg: #111111;
+	--color-bg-opacity-0: #11111100;
+	--color-bg-opacity-50: #11111180;
+	--color-bg-raised: #171717;
+	--color-bg-sunken: #0d0d0d;
+	--color-text: #e7eaf2;
+	--color-text-muted: #9aa4b8;
+	--color-text-faint: #6b7688;
+	--color-accent: #ffffff;
+	--color-accent-deep: #f3c3fe;
+	--color-accent-ink: #4e0456; /* text placed on top of the accent colour */
+	--color-focus: #ffd166;
+
+	--color-border: #eeeeee;
+	--color-bubble: #a7bfcc;
+
+	--color-ders-red: #b11217;
+	--color-trale-blue: #00a2ff;
+	--color-cirne-green: #2ab909;
+
+	/* --- Type ------------------------------------------------------------- */
+	--font-display:
+		"Jersey 10", ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+	--font-mono: "Fira Code", novel-mono-pro, monospace;
+
+	/* clamp() = sizing w/o media queries. min, preferred, max. */
+	--text-xs: 0.9375rem;
+	--text-sm: 1.0625rem;
+	--text-base: 1.25rem;
+	--text-lg: clamp(1.25rem, 1rem + 1vw, 2rem);
+	--text-xl: clamp(1.5rem, 1.1rem + 1.2vw, 2.25rem);
+	--text-2xl: clamp(2.5rem, 1.5rem + 3.5vw, 5rem);
+	--text-3xl: clamp(3rem, 1.75rem + 4.5vw, 6.5rem);
+
+	--leading-tight: 1.15;
+	--leading-snug: 1.35;
+	--leading-normal: 1.5;
+
+	--tracking-wide: 0.08em;
+
+	/* --- Space (4px base) ------------------------------------------------- */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.5rem;
+	--space-6: 2rem;
+	--space-7: 3rem;
+	--space-8: 4rem;
+	--space-9: 6rem;
+
+	/* --- Layout ----------------------------------------------------------- */
+	--content-max: 72rem; /* outer page width */
+	--measure: 66ch; /* comfortable reading width for paragraphs, tweak as desired */
+	--header-h: 6rem;
+
+	/* --- Surface ---------------------------------------------------------- */
+	--radius: 10px;
+	--radius-lg: 18px;
+	--shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.35);
+	--shadow-lg: 0 2px 4px rgb(0 0 0 / 0.4), 0 24px 64px rgb(0 0 0 / 0.5);
+
+	/* --- Motion ----------------------------------------------------------- */
+	--ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+	--duration: 200ms;
+	--duration-slow: 420ms;
+
+	/* --- Other ----------------------------------------------------------- */
+	--bg-pattern: url("../media/img/heartwall-texture-opacity.png");
+	--bg-pattern-size: 48px;
+}

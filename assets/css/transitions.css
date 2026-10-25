@@ -1,0 +1,43 @@
+@layer transitions {
+	/* On browsers without reduced motion that support view transitions */
+	/* Perform an eye-blink transition effect during page navigation */
+	@media (prefers-reduced-motion: no-preference) {
+		@view-transition {
+			navigation: auto;
+		}
+
+		::view-transition {
+			background: #000;
+		}
+
+		::view-transition-group(root) {
+			animation-duration: 640ms;
+		}
+
+		::view-transition-old(root),
+		::view-transition-new(root) {
+			mix-blend-mode: normal;
+		}
+
+		::view-transition-old(root) {
+			animation: blink-close 320ms ease-in both;
+		}
+
+		/* The incoming page stays clipped shut until the outgoing eye closes. */
+		::view-transition-new(root) {
+			animation: blink-close 320ms ease-out 320ms reverse both;
+		}
+
+		@keyframes blink-close {
+			from {
+				clip-path: ellipse(75% 75% at 50% 50%);
+			}
+			60% {
+				clip-path: ellipse(45% 22% at 50% 50%);
+			}
+			to {
+				clip-path: ellipse(45% 0% at 50% 50%);
+			}
+		}
+	}
+}
