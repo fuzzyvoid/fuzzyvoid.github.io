@@ -1,330 +1,327 @@
 @layer components {
-	.skewed-host,
-	.skewed-container {
-		position: relative;
-		isolation: isolate;
-		min-width: 0;
-	}
+  .skewed-host,
+  .skewed-container {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+  }
 
-	.skewed-container {
-		--angle-skew-fg: 2deg;
-		--angle-skew-bg: -1.5deg;
-		--angle-lean-bg: 6deg;
-		--color-skew-accent: var(--color-accent);
-		--color-skew-surface: var(--color-bg);
-		--skew-offset: 1rem;
-		--skew-border-with: 2px;
+  .skewed-container {
+    --angle-skew-fg: 2deg;
+    --angle-skew-bg: -1.5deg;
+    --angle-lean-bg: 6deg;
+    --color-skew-accent: var(--color-accent);
+    --color-skew-surface: var(--color-bg);
+    --skew-offset: 1rem;
+    --skew-border-with: 2px;
 
-		/* Set --skew-pad on a component to override padding */
-		padding: var(--skew-pad, var(--space-7));
+    /* Set --skew-pad on a component to override padding */
+    padding: var(--skew-pad, var(--space-7));
 
-		&.cirne {
-			--color-skew-accent: var(--color-cirne-green);
-		}
+    &.cirne {
+      --color-skew-accent: var(--color-cirne-green);
+    }
 
-		&.trale {
-			--color-skew-accent: var(--color-trale-blue);
-		}
+    &.trale {
+      --color-skew-accent: var(--color-trale-blue);
+    }
 
-		&.ders {
-			--color-skew-accent: var(--color-ders-red);
-		}
+    &.ders {
+      --color-skew-accent: var(--color-ders-red);
+    }
 
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			inset: 0;
-			pointer-events: none;
-		}
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
 
-		&::before {
-			z-index: -2;
-			background: var(--color-skew-accent);
-			transform: translateY(var(--skew-offset))
-				rotate(var(--angle-skew-bg)) skewX(var(--angle-lean-bg));
-		}
+    &::before {
+      z-index: -2;
+      background: var(--color-skew-accent);
+      transform: translateY(var(--skew-offset)) rotate(var(--angle-skew-bg)) skewX(var(--angle-lean-bg));
+    }
 
-		&::after {
-			z-index: -1;
-			background: var(--color-skew-surface);
-			transform: rotate(var(--angle-skew-fg));
-			border: var(--skew-border-with) solid white;
-		}
+    &::after {
+      z-index: -1;
+      background: var(--color-skew-surface);
+      transform: rotate(var(--angle-skew-fg));
+      border: var(--skew-border-with) solid white;
+    }
 
-		&.bare-skew {
-			--angle-skew-fg: -1deg;
+    &.bare-skew {
+      --angle-skew-fg: -1deg;
 
-			&::after {
-				border: 1px solid white;
-				background: transparent;
-				border-left: 0;
-				border-right: 0;
-			}
+      &::after {
+        border: 1px solid white;
+        background: transparent;
+        border-left: 0;
+        border-right: 0;
+      }
 
-			&::before {
-				display: none;
-			}
-		}
-	}
+      &::before {
+        display: none;
+      }
+    }
+  }
 
-	.skewed-container--background {
-		position: absolute;
-		inset: 0;
-		padding: 0;
-		z-index: -1;
-		pointer-events: none;
-	}
+  .skewed-container--background {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
 
-	.panel-card {
-		width: calc(100% - 2 * var(--space-7));
-		max-width: var(--content-max);
-		margin-inline: auto;
-	}
+  .panel-card {
+    width: calc(100% - 2 * var(--space-7));
+    max-width: var(--content-max);
+    margin-inline: auto;
+  }
 
-	.panel--relationship {
-		padding-block: var(--space-7);
-	}
+  .panel--relationship {
+    padding-block: var(--space-7);
+  }
 
-	.relationship-card {
-		--skew-pad: var(--space-8);
-		--skew-offset: 0rem;
-		--skew-direction: 1;
-		--angle-skew-fg: calc(3.5deg * var(--skew-direction));
-		--angle-skew-bg: calc(-2deg * var(--skew-direction));
-		--angle-lean-bg: calc(8deg * var(--skew-direction));
+  .relationship-card {
+    --skew-pad: var(--space-8);
+    --skew-offset: 0rem;
+    --skew-direction: 1;
+    --angle-skew-fg: calc(3.5deg * var(--skew-direction));
+    --angle-skew-bg: calc(-2deg * var(--skew-direction));
+    --angle-lean-bg: calc(8deg * var(--skew-direction));
 
-		display: grid;
-		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-		align-items: center;
-		gap: var(--space-7);
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: center;
+    gap: var(--space-7);
 
-		&.cirne {
-			--skew-direction: -1;
+    .sprite-sheet {
+      pointer-events: none;
+    }
 
-			grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-		}
-	}
+    &.cirne {
+      --skew-direction: -1;
 
-	.relationship__media {
-		width: 100%;
-		height: 18rem;
-		object-fit: contain;
-		image-rendering: pixelated;
-	}
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+  }
 
-	.relationship__text {
-		display: grid;
-		justify-items: start;
-		gap: var(--space-5);
-		max-width: 32rem;
+  .relationship__media {
+    width: 100%;
+    height: 18rem;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
 
-		.cirne {
-			color: var(--color-cirne-green);
-		}
+  .relationship__text {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-5);
+    max-width: 32rem;
 
-		.trale {
-			color: var(--color-trale-blue);
-		}
+    .cirne {
+      color: var(--color-cirne-green);
+    }
 
-		.ders {
-			color: var(--color-ders-red);
-		}
+    .trale {
+      color: var(--color-trale-blue);
+    }
 
-		h2 {
-			font-size: 2.5rem;
-		}
+    .ders {
+      color: var(--color-ders-red);
+    }
 
-		p {
-			font-family: var(--font-mono);
-			font-size: var(--text-sm);
-			font-weight: 300;
-			line-height: var(--leading-snug);
-		}
-	}
+    h2 {
+      font-size: 2.5rem;
+    }
 
-	.panel--survivor {
-		--survivor-overlap: 3rem;
+    p {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 300;
+      line-height: var(--leading-snug);
+    }
+  }
 
-		width: 100%;
-		max-width: none;
-		min-height: min(100dvh, 55vw);
-		padding-inline: max(
-			var(--space-7),
-			calc((100% - var(--content-max)) / 2)
-		);
-		grid-template-columns: 2fr 3fr;
-		align-items: center;
-		overflow: clip;
-	}
+  .panel--survivor {
+    --survivor-overlap: 3rem;
 
-	.panel-survivor-img {
-		position: absolute;
-		top: var(--space-9);
-		left: max(0rem, calc((100% - var(--content-max)) / 2 - var(--space-8)));
-		z-index: 1;
-		width: min(56%, 48rem);
-		max-width: none;
-		height: auto;
-		filter: drop-shadow(5px -5px black);
+    width: 100%;
+    max-width: none;
+    min-height: min(100dvh, 55vw);
+    padding-inline: max(var(--space-7), calc((100% - var(--content-max)) / 2));
+    grid-template-columns: 2fr 3fr;
+    align-items: center;
+    overflow: clip;
+  }
 
-		/* Unlike trale and Ders, cirne covers from the top rather than the bottom */
-		/* so we make them a little smaller */
-		&.cirne {
-			width: min(47%, 40rem);
-			left: max(
-				0rem,
-				calc((100% - var(--content-max)) / 2 - var(--space-9))
-			);
-		}
-	}
+  .panel-survivor-img {
+    position: absolute;
+    top: var(--space-9);
+    left: max(0rem, calc((100% - var(--content-max)) / 2 - var(--space-8)));
+    z-index: 1;
+    width: min(56%, 48rem);
+    max-width: none;
+    height: auto;
+    filter: drop-shadow(5px -5px black);
 
-	.survivor-card {
-		grid-column: 2;
-		grid-row: 1;
-		padding-inline-start: calc(var(--survivor-overlap) + var(--space-6));
+    /* Unlike trale and Ders, cirne covers from the top rather than the bottom */
+    /* so we make them a little smaller */
+    &.cirne {
+      width: min(47%, 40rem);
+      left: max(0rem, calc((100% - var(--content-max)) / 2 - var(--space-9)));
+    }
+  }
 
-		.survivor-details {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: var(--space-4);
-		}
+  .survivor-card {
+    grid-column: 2;
+    grid-row: 1;
+    padding-inline-start: calc(var(--survivor-overlap) + var(--space-6));
 
-		label {
-			text-transform: uppercase;
-		}
+    .survivor-details {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
 
-		img.icon {
-			height: 2rem;
-			width: 2rem;
-			display: inline;
-			border: 1px solid #ffffff78;
-			padding: var(--space-1);
-		}
-	}
+    label {
+      text-transform: uppercase;
+    }
 
-	.survivor-content {
-		display: grid;
-		min-width: 0;
-	}
+    img.icon {
+      height: 2rem;
+      width: 2rem;
+      display: inline;
+      border: 1px solid #ffffff78;
+      padding: var(--space-1);
+    }
+  }
 
-	.survivor-weapon,
-	.survivor-special {
-		display: flex;
-		gap: var(--space-4);
-		align-items: center;
-	}
+  .survivor-content {
+    display: grid;
+    min-width: 0;
+  }
 
-	.card-title {
-		line-height: 1;
-	}
+  .survivor-weapon,
+  .survivor-special {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+  }
 
-	.card-subtitle {
-		font-size: var(--text-lg);
-		font-family: var(--font-mono);
-		color: var(--color-text-muted);
-		font-weight: 300;
-		padding-bottom: 1rem;
-	}
+  .card-title {
+    line-height: 1;
+  }
 
-	@media (width >= 48rem) {
-		.survivor-card {
-			--angle-skew-bg: -4deg;
-			--skew-border-with: 3px;
-			padding-block: var(--space-8);
+  .card-subtitle {
+    font-size: var(--text-lg);
+    font-family: var(--font-mono);
+    color: var(--color-text-muted);
+    font-weight: 300;
+    padding-bottom: 1rem;
+  }
 
-			&::after {
-				transform: rotate(var(--angle-skew-fg)) skewX(-5deg);
-			}
+  @media (width >= 48rem) {
+    .survivor-card {
+      --angle-skew-bg: -4deg;
+      --skew-border-with: 3px;
+      padding-block: var(--space-8);
 
-			.card-subtitle {
-				font-size: 2rem;
-			}
+      &::after {
+        transform: rotate(var(--angle-skew-fg)) skewX(-5deg);
+      }
 
-			.survivor-details {
-				font-family: var(--font-mono);
-				font-size: 1.5rem;
-			}
+      .card-subtitle {
+        font-size: 2rem;
+      }
 
-			label {
-				font-family: var(--font-display);
-				font-size: var(--text-base);
-			}
-		}
-	}
+      .survivor-details {
+        font-family: var(--font-mono);
+        font-size: 1.5rem;
+      }
 
-	@media (48rem <= width < 64rem) {
-		.survivor-card .survivor-details {
-			grid-template-columns: minmax(0, 1fr);
-			gap: var(--space-2);
-		}
-	}
+      label {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+      }
+    }
+  }
 
-	@media (width < 48rem) {
-		.skewed-container {
-			--angle-skew-fg: 1.5deg;
-			--angle-skew-bg: -1deg;
-			--angle-lean-bg: 4deg;
-			--skew-offset: 0.5rem;
+  @media (48rem <= width < 64rem) {
+    .survivor-card .survivor-details {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-2);
+    }
+  }
 
-			padding: var(--skew-pad, var(--space-5));
-		}
+  @media (width < 48rem) {
+    .skewed-container {
+      --angle-skew-fg: 1.5deg;
+      --angle-skew-bg: -1deg;
+      --angle-lean-bg: 4deg;
+      --skew-offset: 0.5rem;
 
-		.skewed-container--background {
-			padding: 0;
-		}
+      padding: var(--skew-pad, var(--space-5));
+    }
 
-		.panel-card {
-			width: calc(100% - 2 * var(--space-5));
-		}
+    .skewed-container--background {
+      padding: 0;
+    }
 
-		.relationship-card,
-		.relationship-card.cirne {
-			--skew-pad: var(--space-6);
-			--angle-skew-fg: calc(1.5deg * var(--skew-direction));
-			--angle-skew-bg: calc(-1deg * var(--skew-direction));
-			--angle-lean-bg: calc(2deg * var(--skew-direction));
-			grid-template-columns: minmax(0, 1fr);
-			gap: var(--space-5);
-		}
+    .panel-card {
+      width: calc(100% - 2 * var(--space-5));
+    }
 
-		.relationship__media {
-			order: -1;
-			height: 12rem;
-		}
+    .relationship-card,
+    .relationship-card.cirne {
+      --skew-pad: var(--space-6);
+      --angle-skew-fg: calc(1.5deg * var(--skew-direction));
+      --angle-skew-bg: calc(-1deg * var(--skew-direction));
+      --angle-lean-bg: calc(2deg * var(--skew-direction));
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-5);
+    }
 
-		.panel--survivor {
-			width: 100%;
-			min-height: auto;
-			padding-block-start: var(--space-8);
-			padding-inline: var(--space-5);
-			grid-template-columns: minmax(0, 1fr);
-		}
+    .relationship__media {
+      order: -1;
+      height: 12rem;
+    }
 
-		.panel-survivor-img {
-			position: relative;
-			top: auto;
-			left: auto;
-			grid-column: 1;
-			grid-row: 1;
-			width: min(100%, 22rem);
-			height: auto;
-			aspect-ratio: 1 / 1.1;
-			object-fit: cover;
-			object-position: top;
-			justify-self: center;
-		}
+    .panel--survivor {
+      width: 100%;
+      min-height: auto;
+      padding-block-start: var(--space-8);
+      padding-inline: var(--space-5);
+      grid-template-columns: minmax(0, 1fr);
+    }
 
-		.survivor-card {
-			grid-column: 1;
-			grid-row: 2;
-			margin-block-start: calc(-1 * var(--survivor-overlap));
-			padding-block-start: calc(var(--survivor-overlap) + var(--space-5));
-			padding-inline-start: var(--space-5);
+    .panel-survivor-img {
+      position: relative;
+      top: auto;
+      left: auto;
+      grid-column: 1;
+      grid-row: 1;
+      width: min(100%, 22rem);
+      height: auto;
+      aspect-ratio: 1 / 1.1;
+      object-fit: cover;
+      object-position: top;
+      justify-self: center;
+    }
 
-			.survivor-details {
-				grid-template-columns: minmax(0, 1fr);
-			}
-		}
-	}
+    .survivor-card {
+      grid-column: 1;
+      grid-row: 2;
+      margin-block-start: calc(-1 * var(--survivor-overlap));
+      padding-block-start: calc(var(--survivor-overlap) + var(--space-5));
+      padding-inline-start: var(--space-5);
+
+      .survivor-details {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  }
 }

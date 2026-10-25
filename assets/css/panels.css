@@ -43,6 +43,16 @@ Snapping is scoped to <html class="snap">, so add/remove that as-needed. It's ki
 		scroll-snap-align: none;
 	}
 
+	@media (width < 48rem) {
+		.snap {
+			scroll-snap-type: none;
+		}
+
+		.panel {
+			scroll-snap-align: none;
+		}
+	}
+
 	.panel__inner {
 		width: 100%;
 		max-width: var(--content-max);

@@ -288,4 +288,7 @@ Kinda janky just to run everything on every page. but eh it's not that much, and
 	trackPanels();
 	heroVideos();
 	trackEye();
+
+	// iOS/safari only applies :active on touch when this listener exists...
+	document.addEventListener('touchstart', () => { }, { passive: true });
 })();

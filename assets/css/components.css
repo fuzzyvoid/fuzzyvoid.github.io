@@ -98,7 +98,9 @@ components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
 		font-size: var(--text-sm);
 		font-weight: 550;
 
-		&:hover {
+		&:hover,
+		&:active,
+		&:focus-visible {
 			color: var(--color-text);
 		}
 
@@ -147,6 +149,10 @@ components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
 	}
 
 	/* Mobile: collapse the nav behind a toggle */
+	.nav__mobile {
+		display: none;
+	}
+
 	.nav-toggle {
 		display: none;
 		background: none;
@@ -188,6 +194,56 @@ components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
 			display: none;
 		}
 
+		.nav__mobile {
+			display: list-item;
+		}
+
+		.nav__survivor-link {
+			display: flex;
+			align-items: center;
+			gap: var(--space-4);
+			min-height: 5rem;
+		}
+
+		.nav__head {
+			display: grid;
+			flex: none;
+			width: 64px;
+			height: 64px;
+
+			img {
+				grid-area: 1 / 1;
+				width: 64px;
+				height: 64px;
+				image-rendering: pixelated;
+				transition: opacity var(--duration) var(--ease);
+			}
+
+			.hover {
+				opacity: 0;
+			}
+		}
+
+		.nav__survivor-link:is(:hover, :active, :focus-visible) .nav__head {
+			.base {
+				opacity: 0;
+			}
+
+			.hover {
+				opacity: 1;
+			}
+		}
+
+		/* Centre the small icons in a 64px column so labels line up with the survivor heads */
+		.nav__link.with-icon {
+			padding-left: var(--space-4);
+
+			&::before {
+				margin-inline: calc((64px - 1rem) / 2)
+					calc((64px - 1rem) / 2 + var(--space-4));
+			}
+		}
+
 		/* With JS: fixed-height header, nav becomes a dropdown */
 		.js .site-header {
 			height: var(--header-h);
@@ -200,16 +256,38 @@ components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
 		}
 
 		.js .nav {
+			display: grid;
 			position: absolute;
 			inset-inline: 0;
 			top: var(--header-h);
-			flex-direction: column;
+			height: calc(100dvh - var(--header-h));
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			grid-auto-rows: minmax(5.5rem, 1fr);
 			align-items: stretch;
 			gap: 0;
-			padding: var(--space-3);
+			padding: 0 var(--space-3);
 			background: var(--color-bg-raised);
 			border-bottom: 1px solid var(--color-border);
 			box-shadow: var(--shadow);
+		}
+
+		.js:has(.nav[data-open="true"]) {
+			overflow: hidden;
+		}
+
+		.js .nav > li:not(.nav__cta) {
+			display: flex;
+		}
+
+		.js .nav__link {
+			display: flex;
+			align-items: center;
+			flex: 1;
+		}
+
+		.js .nav > li + li .nav__link {
+			border-top: 1px solid var(--color-text-muted);
 		}
 
 		.js .nav[data-open="false"] {
@@ -218,6 +296,7 @@ components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
 
 		.nav__link {
 			padding: var(--space-3) var(--space-4);
+			font-size: clamp(1.5rem, 4dvh, 2.5rem);
 		}
 	}
 
@@ -368,6 +447,8 @@ components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
 		}
 
 		&:hover::before,
+		&:active::before,
+		&:focus-visible::before,
 		&.active::before {
 			background-image: url("../media/img/icons/UI_Ders_HP.png");
 			opacity: 1;
@@ -382,11 +463,15 @@ components.css: reusable pieces: header, nav, buttons, cards, footer, etc.
 		}
 
 		&.cirne:hover::before,
+		&.cirne:active::before,
+		&.cirne:focus-visible::before,
 		&.cirne.active::before {
 			background-image: url("../media/img/icons/UI_Cirne_HP.png");
 		}
 
 		&.trale:hover::before,
+		&.trale:active::before,
+		&.trale:focus-visible::before,
 		&.trale.active::before {
 			background-image: url("../media/img/icons/UI_Trale_HP.png");
 		}
