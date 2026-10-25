@@ -284,10 +284,62 @@ Kinda janky just to run everything on every page. but eh it's not that much, and
 		}
 	};
 
+	/**
+	 * Starts fetching/playing `[data-autoplay]` videos using `preload="none"` shortly before they scroll into view, and pause once they exit.
+	 *
+	 * This means other content on the page (which will almost certainly be smaller) can load without being blocked, but we still get SOME autoloading.
+	 */
+	const lazyAutoplay = () => {
+		/**
+		 * @var {NodeListOf<HTMLVideoElement>} videos
+		 */
+		const videos = document.querySelectorAll('video[data-autoplay]');
+
+		if (videos.length === 0) {
+			return;
+		}
+
+		const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+		const start = (video) => {
+			if (reducedMotion.matches) {
+				video.preload = 'metadata';
+
+				return;
+			}
+
+			video.preload = 'auto';
+			video.play().catch(() => {
+				// Autoplay can be blocked (e.g. low power mode); the poster stays visible.
+			});
+		};
+
+		// Compat check
+		if (!('IntersectionObserver' in window)) {
+			videos.forEach(start);
+
+			return;
+		}
+
+		// Otherwise do the start lazy loading
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(({ target, isIntersecting }) => {
+				if (isIntersecting) {
+					start(target);
+				} else {
+					target.pause();
+				}
+			});
+		}, { rootMargin: '100% 0px' });
+
+		videos.forEach((video) => observer.observe(video));
+	};
+
 	markCurrentNav();
 	trackPanels();
 	heroVideos();
 	trackEye();
+	lazyAutoplay();
 
 	// iOS/safari only applies :active on touch when this listener exists...
 	document.addEventListener('touchstart', () => { }, { passive: true });

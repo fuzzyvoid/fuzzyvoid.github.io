@@ -299,11 +299,15 @@
 	<!-- ============ PANEL 2 - Trailer ============ -->
 	<!-- Without JavaScript the button opens the video file. With Alpine it swaps the still for the video in place. -->
 	<section class="panel panel--trailer with-panel-bg" id="trailer" x-data="{ playing: false }">
-		<img class="panel__bg"
-			src="assets/media/img/revertices-main-capsule.png"
+		<img
+			class="panel__bg"
+			src="assets/media/img/revertices-main-capsule-1232.webp"
+			srcset="assets/media/img/revertices-main-capsule-640.webp 640w,
+				assets/media/img/revertices-main-capsule-1232.webp 1232w"
+			sizes="(max-width: 47.99rem) 180vh, 100vw"
 			alt=""
-			width="1920"
-			height="1080"
+			width="1232"
+			height="706"
 			loading="lazy"
 			x-show="!playing"
 		>
@@ -360,7 +364,7 @@
 				<p>You are one of three possible survivors: the last line of defense against the Polygonal Entity.</p>
 			</div>
 
-			<video class="feature__media reveal reveal--late" src="assets/media/video/bosses_rush.mp4" muted loop playsinline controls autoplay preload="lazy"></video>
+			<video class="feature__media reveal reveal--late" src="assets/media/video/bosses_rush.mp4" poster="assets/media/img/posters/bosses_rush.webp" width="1920" height="1080" muted loop playsinline controls preload="none" data-autoplay></video>
 			<!-- <img class="feature__media reveal reveal--late"
 				src="assets/media/img/screenshots/stabby.png"
 				alt="The survivor select screen."
@@ -387,10 +391,16 @@
 			</div>
 			<!-- A short clip here of the same location in multiple loops could be good -->
 			<!-- Lazy flipping of existing image via transform until we have something different -->
-			<img class="feature__media reveal reveal--late"
-				src="assets/media/img/screenshots/map.png"
-				alt="A survivor fighting a corrupted boss."
+			<img
+				class="feature__media reveal reveal--late"
 				style="transform: scaleX(-1)"
+				src="assets/media/img/screenshots/map-1600.webp"
+				srcset="assets/media/img/screenshots/map-800.webp 800w,
+					assets/media/img/screenshots/map-1280.webp 1280w,
+					assets/media/img/screenshots/map-1600.webp 1600w,
+					assets/media/img/screenshots/map-1920.webp 1920w"
+				sizes="(max-width: 47.99rem) 128vw, 178vh"
+				alt="A survivor fighting a corrupted boss."
 				width="1600"
 				height="900"
 				loading="lazy"
@@ -416,7 +426,7 @@
 				<p>Try again...</p>
 			</div>
 
-			<video class="feature__media reveal reveal--late" src="assets/media/video/corruption_spreads.mp4" muted loop playsinline autoplay preload="lazy"></video>
+			<video class="feature__media reveal reveal--late" src="assets/media/video/corruption_spreads.mp4" poster="assets/media/img/posters/corruption_spreads.webp" width="1920" height="1080" muted loop playsinline preload="none" data-autoplay></video>
 			<!-- <img class="feature__media reveal reveal--late"
 				src="assets/media/img/screenshots/map.png"
 				alt="The cycle resetting."
@@ -450,13 +460,20 @@
 				</ul>
 			</div>
 			<figure>
-				<img class="feature__media reveal reveal--late"
-					src="assets/media/img/Revertices_Wallpaper.png"
+				<img
+					class="feature__media reveal reveal--late"
+					src="assets/media/img/Revertices_Wallpaper.webp"
+					srcset="assets/media/img/Revertices_Wallpaper-800.webp 800w,
+						assets/media/img/Revertices_Wallpaper-1280.webp 1280w,
+						assets/media/img/Revertices_Wallpaper.webp 1600w,
+						assets/media/img/Revertices_Wallpaper-1920.webp 1920w"
+					sizes="(max-width: 47.99rem) 113vw, 151vh"
 					alt="A story scene between the survivors facing off against enemies"
 					width="1600"
-					height="900"
+					height="1061"
 					loading="lazy"
-					decoding="async">
+					decoding="async"
+				>
 				<figcaption>Art by <a href="http://www.instagram.com/amberrobyntattoos" target="_blank">Amber Robyn</a></figcaption>
 			</figure>
 		</div>
@@ -478,19 +495,29 @@
 				</div>
 
 				<div class="team__logos reveal reveal--late">
-					<img src="assets/media/img/fuzzy-void-logo.png"
+					<img
+						src="assets/media/img/fuzzy-void-logo-1025.webp"
+						srcset="assets/media/img/fuzzy-void-logo-512.webp 512w,
+							assets/media/img/fuzzy-void-logo-1025.webp 1025w"
+						sizes="(max-width: 47.99rem) 100vw, 60vw"
 						alt="Fuzzy Void logo"
-						width="1264"
-						height="648"
+						width="1025"
+						height="282"
 						loading="lazy"
-						decoding="async">
-					<img src="assets/media/img/snotwurm-logo.png"
-						alt="Snotwurm Studios logo"
+						decoding="async"
+					>
+					<img
 						class="snotwurm-logo"
-						width="1264"
-						height="648"
+						src="assets/media/img/snotwurm-logo-1002.webp"
+						srcset="assets/media/img/snotwurm-logo-512.webp 512w,
+							assets/media/img/snotwurm-logo-1002.webp 1002w"
+						sizes="(max-width: 47.99rem) 100vw, 60vw"
+						alt="Snotwurm Studios logo"
+						width="1002"
+						height="366"
 						loading="lazy"
-						decoding="async">
+						decoding="async"
+					>
 				</div>
 			</div>
 		</div>

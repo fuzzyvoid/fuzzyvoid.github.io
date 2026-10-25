@@ -158,21 +158,39 @@
     overflow: clip;
   }
 
+  /*
+  Anchor each survivor art to the right edge of the first grid col, so it reaches a fixed distance (--reach), which is tweaked per-shape
+  */
   .panel-survivor-img {
+    --reach: 6.5rem;
+    --share: 56vw;
+    --max-width: 48rem;
+
     position: absolute;
+    grid-column: 1 / 2;
     top: var(--space-9);
-    left: max(0rem, calc((100% - var(--content-max)) / 2 - var(--space-8)));
+    right: calc(-1 * var(--reach));
     z-index: 1;
-    width: min(56%, 48rem);
+    width: min(
+      var(--share),
+      var(--max-width),
+      /* Don't get pushed off screen in very narrow viewports, +0.5rem for the scrollbar */
+        calc(100% + var(--reach) + max(var(--space-7), (100vw - var(--content-max)) / 2 - 0.5rem))
+    );
     max-width: none;
     height: auto;
     filter: drop-shadow(5px -5px black);
 
+    &.trale {
+      --reach: 5rem;
+    }
+
     /* Unlike trale and Ders, cirne covers from the top rather than the bottom */
     /* so we make them a little smaller */
     &.cirne {
-      width: min(47%, 40rem);
-      left: max(0rem, calc((100% - var(--content-max)) / 2 - var(--space-9)));
+      --reach: 5rem;
+      --share: 47vw;
+      --max-width: 40rem;
     }
   }
 
@@ -302,6 +320,7 @@
       position: relative;
       top: auto;
       left: auto;
+      right: auto;
       grid-column: 1;
       grid-row: 1;
       width: min(100%, 22rem);
@@ -310,6 +329,10 @@
       object-fit: cover;
       object-position: top;
       justify-self: center;
+
+      &.cirne {
+        width: min(47%, 40rem);
+      }
     }
 
     .survivor-card {

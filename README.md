@@ -1,4 +1,4 @@
-[![Revertices logo](assets/media/img/logo-small-gif.gif)](https://revertices.com)
+[![Revertices logo](assets/media/img/logo-clean.png)](https://revertices.com)
 
 # V2 Overview
 
@@ -17,6 +17,9 @@ V2 is similar to V1 but with slight differences in how reusable content is handl
   - /pages
   - /common
   - /posts
+
+- Resized files
+  - i have a script i can run if you wanna have resized files, but IMO so long as the full size is still under 1-2mb it doesn't really matter, which is achievable for webp stuff that isn't gigantic
 
 > **Note**: Image mask for the homepage eyeball doesn't work when opening the .html file locally unless it's on a webserver due to browser security weirdness. Also, depending on browser (i.e. firefox vs chrome) the fancier transitions/CSS may or may not run.
 
